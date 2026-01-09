@@ -44,22 +44,36 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+    /* ONLY ADDED: Header styling for the sleek green line */
+    header {
+      border-bottom: 1px solid rgba(60, 202, 96, 0.2);
+      box-shadow: 0 4px 20px -12px rgba(60, 202, 96, 0.3);
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
     nav {
-      padding: 32px 0;
+      padding: 20px 0; /* Adjusted slightly for the new header wrapper */
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    
+    /* MODIFIED: Pill to look more like the "sleek green line" aesthetic */
     .status-pill {
-      background: var(--glass);
-      border: 1px solid var(--border);
+      background: rgba(60, 202, 96, 0.05);
+      border: 1px solid var(--accent);
       padding: 6px 14px;
       border-radius: 100px;
       font-size: 12px;
       color: var(--accent);
       font-weight: 600;
       display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 0 10px rgba(60, 202, 96, 0.1);
     }
     .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
@@ -76,13 +90,12 @@
       z-index: 2;
     }
 
-    /* Stacking the text to make Clarity wide below */
     .h1 {
       font-weight: 900;
       margin: 0 0 32px 0;
       display: flex;
       flex-direction: column;
-      line-height: 0.85; /* Tighter spacing for modern look */
+      line-height: 0.85; 
     }
 
     .h1 .master-text {
@@ -93,7 +106,7 @@
     }
 
     .h1 .clarity-word {
-      font-size: clamp(70px, 12vw, 140px); /* Massive focus word */
+      font-size: clamp(70px, 12vw, 140px); 
       background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -166,20 +179,24 @@
 
   <div class="mesh-bg"></div>
 
-  <div class="container">
-    <nav>
-      <div class="logo-text">
-        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="32" fill="#3CCA60"/>
-            <path d="M20 28h10l6 6h8l6 6h6" stroke="#050812" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        Weed It Out
-      </div>
-      <div class="status-pill">
-        <div class="dot"></div> iOS Development
-      </div>
-    </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo-text">
+          <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="32" fill="#3CCA60"/>
+              <path d="M20 28h10l6 6h8l6 6h6" stroke="#050812" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          Weed It Out
+        </div>
+        <div class="status-pill">
+          <div class="dot"></div> iOS Development
+        </div>
+      </nav>
+    </div>
+  </header>
 
+  <div class="container">
     <main class="hero">
       <div class="hero-content">
         <h1 class="h1">
