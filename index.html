@@ -30,6 +30,10 @@
       color: var(--text-main);
       line-height: 1.4;
       overflow-x: hidden;
+      /* Flexbox ensures footer stays at bottom */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .mesh-bg {
@@ -41,7 +45,7 @@
         radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
     header {
       position: sticky;
@@ -53,153 +57,99 @@
       overflow: hidden;
     }
 
-    header::after {
+    /* FOOTER STYLES */
+    footer {
+      margin-top: auto;
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(60, 202, 96, 0.1);
+      padding: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after, footer::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: -100%;
       width: 100%;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
       animation: sweep 8s linear infinite;
       box-shadow: 0 0 15px var(--accent);
     }
+    header::after { bottom: 0; left: -100%; }
+    footer::before { top: 0; left: -100%; }
 
-    @keyframes sweep {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
+    @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
 
-    nav {
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
+    nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    .logo-group { display: flex; align-items: center; gap: 14px; }
     .logo-img { width: 42px; height: auto; }
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
 
     .status-pill {
-      background: rgba(60, 202, 96, 0.05);
-      border: 1px solid var(--accent);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 600;
+      background: rgba(60, 202, 96, 0.05); border: 1px solid var(--accent);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; color: var(--accent); font-weight: 600;
       display: flex; align-items: center; gap: 8px;
     }
 
-    .dot { 
-      width: 6px; height: 6px; 
-      background: var(--accent); 
-      border-radius: 50%; 
-      box-shadow: 0 0 10px var(--accent); 
-      animation: pulse 2s infinite;
-    }
+    .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
+    .hero { padding: 80px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 60px; flex: 1; }
+    .hero-content { flex: 1; position: relative; }
 
-    .hero {
-      padding: 80px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 60px;
-    }
-
-    .hero-content {
-      flex: 1;
-      position: relative;
-    }
-
-    .h1 {
-      font-weight: 900;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05; /* Balanced spacing between lines */
-      position: relative; 
-      z-index: 999 !important; 
-    }
-
-    .h1 .master-text {
-      font-size: clamp(32px, 4.5vw, 58px);
-      letter-spacing: -1px; /* Less cramped horizontally */
-      color: #fff;
-      padding-bottom: 4px; 
-    }
-
+    .h1 { font-weight: 900; margin: 0; display: flex; flex-direction: column; line-height: 1.05; position: relative; z-index: 999 !important; }
+    .h1 .master-text { font-size: clamp(32px, 4.5vw, 58px); letter-spacing: -1px; color: #fff; padding-bottom: 4px; }
     .h1 .clarity-word {
-      font-size: clamp(70px, 12vw, 140px); 
-      background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -2px; /* Much less negative than before to prevent letter touching */
-      filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
+      font-size: clamp(70px, 12vw, 140px); background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: -2px; filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
     }
 
-    .hero-sub {
-      font-size: 20px;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin-top: 45px; 
-      margin-bottom: 48px;
-      position: relative;
-      z-index: 1; 
-    }
+    .hero-sub { font-size: 20px; color: var(--text-muted); max-width: 520px; margin-top: 45px; margin-bottom: 48px; position: relative; z-index: 1; }
 
     .btn-group { display: flex; gap: 16px; }
-    .btn {
-      padding: 18px 32px;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-size: 16px;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #050812;
-      box-shadow: 0 20px 40px var(--accent-glow);
-    }
-    .btn-secondary {
-      background: var(--glass);
-      color: white;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
+    .btn { padding: 18px 32px; border-radius: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s ease; font-size: 16px; border: none; font-family: inherit; cursor: pointer; display: inline-block; }
+    .btn-primary { background: var(--accent); color: #050812; box-shadow: 0 20px 40px var(--accent-glow); }
+    .btn-secondary { background: var(--glass); color: white; border: 1px solid var(--border); backdrop-filter: blur(10px); }
 
     .hero-image { flex: 0 0 380px; }
     .phone-frame {
-      border-radius: 48px;
-      overflow: hidden;
-      border: 8px solid #1e293b;
+      border-radius: 48px; overflow: hidden; border: 8px solid #1e293b;
       box-shadow: 0 60px 120px -20px rgba(0,0,0,0.8);
     }
     .phone-frame img { width: 100%; display: block; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     .floating { animation: float 6s ease-in-out infinite; }
+
+    /* MODAL (POPUP) STYLES */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(5, 8, 18, 0.85); backdrop-filter: blur(12px);
+      display: none; align-items: center; justify-content: center; z-index: 2000;
+    }
+    .modal-card {
+      background: #0b1220; border: 1px solid var(--accent); border-radius: 24px;
+      padding: 40px; width: 90%; max-width: 400px; text-align: center;
+      box-shadow: 0 0 50px var(--accent-glow); position: relative;
+    }
+    .modal-card h2 { margin-top: 0; color: #fff; }
+    .modal-card p { color: var(--text-muted); margin-bottom: 24px; }
+    .modal-input {
+      width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--glass); color: white; font-size: 16px; margin-bottom: 20px; outline: none;
+    }
+    .modal-input:focus { border-color: var(--accent); }
+    .close-btn { position: absolute; top: 15px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 24px; }
 
     @media (max-width: 1100px) {
       .hero { flex-direction: column; text-align: center; align-items: center; }
       .hero-sub { margin: 45px auto 40px; }
       .btn-group { justify-content: center; }
-      .hero-image { flex: 0 0 auto; max-width: 320px; }
+      .hero-image { flex: 0 0 auto; max-width: 320px; margin-top: 40px; }
     }
   </style>
 </head>
@@ -214,9 +164,7 @@
           <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
           <div class="logo-text">Weed It Out</div>
         </div>
-        <div class="status-pill">
-          <div class="dot"></div> iOS
-        </div>
+        <div class="status-pill"><div class="dot"></div> iOS</div>
       </nav>
     </div>
   </header>
@@ -232,7 +180,7 @@
           A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim your time back.
         </p>
         <div class="btn-group">
-          <a href="#early-access" class="btn btn-primary">Request Early Access</a>
+          <button onclick="openModal()" class="btn btn-primary">Request Early Access</button>
           <a href="#features" class="btn btn-secondary">Explore Features</a>
         </div>
       </div>
@@ -244,6 +192,57 @@
       </div>
     </main>
   </div>
+
+  <footer>
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 14px;">
+        <div>© 2026 Weed It Out</div>
+        <div style="display: flex; gap: 20px;">
+          <span>Privacy</span>
+          <span>Terms</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="emailModal">
+    <div class="modal-card">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Get Early Access</h2>
+      <p>Enter your email to join the waiting list for our iOS launch.</p>
+      <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
+      <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('emailModal');
+
+    function openModal() {
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function submitEmail() {
+      const email = document.getElementById('emailInput').value;
+      if (email && email.includes('@')) {
+        const subject = encodeURIComponent("Early Access Request");
+        const body = encodeURIComponent("I would like to request early access for: " + email);
+        window.location.href = "mailto:weeditout.app@gmail.com?subject=" + subject + "&body=" + body;
+        closeModal();
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event) {
+      if (event.target == modal) closeModal();
+    }
+  </script>
 
 </body>
 </html>
