@@ -5,262 +5,128 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
   <title>Weed It Out — Reclaim your clarity</title>
-  <meta name="description" content="A gamified cannabis cessation and moderation tool designed to help you track urges and reclaim your time." />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --bg-deep: #050812;
-      --bg-card: rgba(15, 23, 42, 0.65);
+      --bg: #0b1220;
+      --card: #0f172a;
       --accent: #3CCA60;
-      --accent-glow: rgba(60, 202, 96, 0.3);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --text: #e7eefc;
+      --muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
-      --glass: rgba(255, 255, 255, 0.03);
-      --radius: 24px;
     }
 
     * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-    
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      background-color: var(--bg-deep);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
+    body { 
+      margin: 0; background: var(--bg); color: var(--text); 
+      font-family: -apple-system, system-ui, sans-serif;
+      line-height: 1.5;
     }
 
-    /* Animated Mesh Background */
-    .mesh-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -1;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(60, 202, 96, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 40%);
-    }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
     /* Nav */
-    nav {
-      padding: 32px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
-    .status-pill {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+    nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; }
+    .logo-brand { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+    .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 12px var(--accent); }
 
-    /* Hero Section */
-    .hero {
-      padding: 80px 0 120px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
-      align-items: center;
-    }
+    /* Hero Layout */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } }
 
-    .h1 {
-      font-size: clamp(48px, 6vw, 82px);
-      line-height: 0.95;
-      font-weight: 900;
-      letter-spacing: -3px;
-      margin-bottom: 24px;
-      background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1.1; margin: 0 0 20px; letter-spacing: -2px; }
+    .sub { font-size: 19px; color: var(--muted); margin-bottom: 32px; max-width: 480px; }
 
-    .hero-sub {
-      font-size: 20px;
-      color: var(--text-muted);
-      max-width: 500px;
-      margin-bottom: 40px;
+    /* The Hovering Dashboard */
+    .dashboard-preview {
+      background: #070d18; border-radius: 32px; border: 1px solid var(--border);
+      padding: 24px; position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      animation: float 6s ease-in-out infinite;
     }
-
-    .btn-group { display: flex; gap: 16px; }
-    .btn {
-      padding: 18px 32px;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-size: 16px;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #050812;
-      box-shadow: 0 20px 40px var(--accent-glow);
-    }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
-    
-    .btn-secondary {
-      background: var(--glass);
-      color: white;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
-
-    /* App Preview Mockup (The "Impressive" Part) */
-    .app-mockup {
-      position: relative;
-      background: #0f172a;
-      border-radius: 40px;
-      padding: 20px;
-      border: 6px solid #1e293b;
-      box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7);
-    }
-    .mock-stat-card {
-      background: rgba(30, 41, 59, 0.5);
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 12px;
-      border: 1px solid var(--border);
-    }
-    .mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .mock-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-    .mock-val { font-size: 24px; font-weight: 800; color: var(--accent); }
-
-    /* Features Section */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 100px;
-    }
-    .f-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: var(--radius);
-      backdrop-filter: blur(12px);
-      transition: border 0.3s ease;
-    }
-    .f-card:hover { border-color: rgba(60, 202, 96, 0.4); }
-    .f-icon { font-size: 32px; margin-bottom: 20px; display: block; }
-    .f-card h3 { margin: 0 0 12px; font-size: 22px; }
-    .f-card p { color: var(--text-muted); margin: 0; }
-
-    /* Floating Animation */
     @keyframes float {
-      0% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
     }
-    .floating { animation: float 6s ease-in-out infinite; }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 0; }
-      .h1 { letter-spacing: -1.5px; }
-      .hero-sub { margin: 0 auto 40px; }
-      .btn-group { justify-content: center; flex-direction: column; }
-      .app-mockup { max-width: 320px; margin: 40px auto 0; }
+    /* Internal App Elements recreated from your screenshots */
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .app-card { background: var(--card); border: 1px solid var(--border); padding: 16px; border-radius: 16px; }
+    .label { font-size: 11px; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+    .val { font-size: 22px; font-weight: 800; color: var(--accent); margin-top: 4px; }
+
+    /* Recreated Badge Icons from your 'Achievements' screenshot */
+    .badge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .badge-item { 
+        border: 1px solid var(--accent); background: rgba(60, 202, 96, 0.05);
+        border-radius: 16px; padding: 12px; text-align: center;
     }
+    .badge-icon { 
+        width: 32px; height: 32px; background: var(--accent); border-radius: 50%; 
+        margin: 0 auto 8px; display: grid; place-items: center; color: #000; font-size: 14px;
+    }
+
+    .btn {
+      background: var(--accent); color: #000; padding: 16px 32px;
+      border-radius: 14px; text-decoration: none; font-weight: 800;
+      display: inline-block; transition: 0.2s;
+    }
+    .btn:hover { filter: brightness(1.1); }
+
+    footer { margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 14px; }
   </style>
 </head>
 <body>
 
-  <div class="mesh-bg"></div>
-
   <div class="container">
     <nav>
-      <div class="logo-text">
-        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="32" fill="#3CCA60"/>
-            <path d="M20 28h10l6 6h8l6 6h6" stroke="#050812" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        Weed It Out
-      </div>
-      <div class="status-pill">
-        <div class="dot"></div> iOS Development
-      </div>
+      <div class="logo-brand"><div class="dot"></div> Weed It Out</div>
+      <div style="font-size: 12px; opacity: 0.5;">v1.0 EARLY ACCESS</div>
     </nav>
 
     <main class="hero">
-      <div class="hero-content">
-        <h1 class="h1">Master your <br>Clarity.</h1>
-        <p class="hero-sub">
-          A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim the time you've earned back.
-        </p>
-        <div class="btn-group">
-          <a href="#early-access" class="btn btn-primary">Request Early Access</a>
-          <a href="#features" class="btn btn-secondary">Explore Features</a>
+      <div class="hero-text">
+        <h1>Take control of <br>your clarity.</h1>
+        <p class="sub">A clean, gamified experience designed to track urges, visualize savings, and reclaim your time.</p>
+        <div class="cta">
+          <a href="mailto:weeditout.app@gmail.com" class="btn">Get Early Access</a>
         </div>
       </div>
 
-      <div class="hero-image floating">
-        <div class="app-mockup">
-          <div class="mock-stat-card">
-            <div class="mock-label">Today's Savings</div>
-            <div class="mock-val">$14.50</div>
-          </div>
-          <div class="mock-grid">
-            <div class="mock-stat-card">
-                <div class="mock-label">Clarity</div>
-                <div class="mock-val" style="color: #60A5FA;">100</div>
+      <div class="hero-visual">
+        <div class="dashboard-preview">
+          <div class="stat-row">
+            <div class="app-card">
+              <div class="label">Total Saved</div>
+              <div class="val">$4.48</div>
             </div>
-            <div class="mock-stat-card">
-                <div class="mock-label">Grams Avoided</div>
-                <div class="mock-val">2.5g</div>
+            <div class="app-card">
+              <div class="label">Clarity</div>
+              <div class="val" style="color: #60A5FA;">100</div>
             </div>
           </div>
-          <div class="mock-stat-card" style="border-left: 4px solid var(--accent);">
-            <div class="mock-label" style="color: var(--accent);">Achievement Unlocked</div>
-            <div style="font-size: 14px; font-weight: 600; margin-top: 4px;">Habit Breaker</div>
+
+          <div class="label" style="margin-bottom: 10px;">Badges Earned</div>
+          <div class="badge-grid">
+            <div class="badge-item">
+              <div class="badge-icon">⚡</div>
+              <div style="font-size: 11px; font-weight: 700;">Habit Breaker</div>
+            </div>
+            <div class="badge-item">
+                <div class="badge-icon">🐛</div>
+                <div style="font-size: 11px; font-weight: 700;">Early Bird</div>
+              </div>
+          </div>
+          
+          <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px; text-align: center;">
+             <div class="label" style="font-size: 9px;">Daily Avoided</div>
+             <div style="font-size: 18px; font-weight: 800; color: #fff; margin-top: 4px;">0.56g</div>
           </div>
         </div>
       </div>
     </main>
 
-    <section id="features" class="features-grid">
-        <div class="f-card">
-            <span class="f-icon">🧠</span>
-            <h3>Clarity Score</h3>
-            <p>Every resisted urge boosts your clarity. Every session spends it. Watch your mental momentum grow in real-time.</p>
-        </div>
-        <div class="f-card">
-            <span class="f-icon">⏳</span>
-            <h3>Time Gained</h3>
-            <p>We don't just track days; we track minutes. See exactly how much life you've reclaimed from the fog.</p>
-        </div>
-        <div class="f-card">
-            <span class="f-icon">🏆</span>
-            <h3>Gamified Wins</h3>
-            <p>Earn badges for early morning resistance, night owl streaks, and hitting financial milestones.</p>
-        </div>
-    </section>
-
-    <section id="early-access" style="text-align: center; padding-bottom: 100px;">
-        <div class="f-card" style="max-width: 600px; margin: 0 auto;">
-            <h2>Ready to weed it out?</h2>
-            <p style="margin-bottom: 30px;">Be the first to know when we launch on the App Store.</p>
-            <a href="mailto:hello@weeditout.app" class="btn btn-primary" style="display: inline-block;">Email for Early Access</a>
-        </div>
-    </section>
-
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
-        <div>© 2026 Weed It Out</div>
-        <div style="display: flex; gap: 20px;">
-            <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
-            <a href="#" style="color: inherit; text-decoration: none;">Support</a>
-        </div>
+    <footer>
+      <p>© 2026 Weed It Out. Reach us at <a href="mailto:weeditout.app@gmail.com" style="color: var(--accent); text-decoration: none;">weeditout.app@gmail.com</a></p>
     </footer>
   </div>
 
