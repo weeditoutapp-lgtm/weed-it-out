@@ -210,6 +210,15 @@
 .feature-card:hover::before {
   opacity: 1;
 }
+.feature-card:active::before { opacity: 1; }
+.feature-card:focus-visible::before { opacity: 1; }
+
+.feature-card:active{
+  transform: translateY(-2px);
+  border-color: rgba(60, 202, 96, 0.75);
+  box-shadow: 0 34px 80px rgba(0,0,0,0.45);
+}
+
 
 
     .feature-card:hover {
