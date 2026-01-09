@@ -65,119 +65,66 @@
       box-shadow: 0 0 15px var(--accent);
     }
 
-    @keyframes sweep {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
+    @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
 
-    nav {
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
+    nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    .logo-group { display: flex; align-items: center; gap: 14px; }
     .logo-img { width: 42px; height: auto; }
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
 
     .status-pill {
-      background: rgba(60, 202, 96, 0.05);
-      border: 1px solid var(--accent);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 600;
+      background: rgba(60, 202, 96, 0.05); border: 1px solid var(--accent);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; color: var(--accent); font-weight: 600;
       display: flex; align-items: center; gap: 8px;
     }
 
-    .dot { 
-      width: 6px; height: 6px; 
-      background: var(--accent); 
-      border-radius: 50%; 
-      box-shadow: 0 0 10px var(--accent); 
-      animation: pulse 2s infinite;
-    }
+    .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
+    .hero { padding: 80px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 60px; }
+    .hero-content { flex: 1; position: relative; }
 
-    .hero {
-      padding: 80px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 60px;
-    }
-
-    .hero-content {
-      flex: 1;
-      position: relative;
-    }
-
-    .h1 {
-      font-weight: 900;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05; /* Balanced spacing between lines */
-      position: relative; 
-      z-index: 999 !important; 
-    }
-
-    .h1 .master-text {
-      font-size: clamp(32px, 4.5vw, 58px);
-      letter-spacing: -1px; /* Less cramped horizontally */
-      color: #fff;
-      padding-bottom: 4px; 
-    }
-
+    .h1 { font-weight: 900; margin: 0; display: flex; flex-direction: column; line-height: 1.05; position: relative; z-index: 999 !important; }
+    .h1 .master-text { font-size: clamp(32px, 4.5vw, 58px); letter-spacing: -1px; color: #fff; padding-bottom: 4px; }
     .h1 .clarity-word {
-      font-size: clamp(70px, 12vw, 140px); 
-      background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -2px; /* Much less negative than before to prevent letter touching */
-      filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
+      font-size: clamp(70px, 12vw, 140px); background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: -2px; filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
     }
 
-    .hero-sub {
-      font-size: 20px;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin-top: 45px; 
-      margin-bottom: 48px;
-      position: relative;
-      z-index: 1; 
+    .hero-sub { font-size: 20px; color: var(--text-muted); max-width: 520px; margin-top: 45px; margin-bottom: 48px; position: relative; z-index: 1; }
+
+    .btn-group { display: flex; gap: 16px; margin-bottom: 60px; } /* Added margin for badges */
+    .btn { padding: 18px 32px; border-radius: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s ease; font-size: 16px; }
+    .btn-primary { background: var(--accent); color: #050812; box-shadow: 0 20px 40px var(--accent-glow); }
+    .btn-secondary { background: var(--glass); color: white; border: 1px solid var(--border); backdrop-filter: blur(10px); }
+
+    /* BADGES SECTION - Located below buttons on the left */
+    .badge-container {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 20px;
     }
 
-    .btn-group { display: flex; gap: 16px; }
-    .btn {
-      padding: 18px 32px;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-size: 16px;
+    .badge-item {
+      width: 72px;
+      height: 72px;
+      background: rgba(13, 18, 31, 0.5);
+      border: 1px solid var(--accent);
+      border-radius: 18px;
+      padding: 10px;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #050812;
-      box-shadow: 0 20px 40px var(--accent-glow);
-    }
-    .btn-secondary {
-      background: var(--glass);
-      color: white;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
+
+    .badge-item img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     .hero-image { flex: 0 0 380px; }
@@ -189,17 +136,15 @@
     }
     .phone-frame img { width: 100%; display: block; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     .floating { animation: float 6s ease-in-out infinite; }
 
     @media (max-width: 1100px) {
       .hero { flex-direction: column; text-align: center; align-items: center; }
       .hero-sub { margin: 45px auto 40px; }
       .btn-group { justify-content: center; }
-      .hero-image { flex: 0 0 auto; max-width: 320px; }
+      .badge-container { justify-content: center; }
+      .hero-image { flex: 0 0 auto; max-width: 320px; margin-top: 40px; }
     }
   </style>
 </head>
@@ -231,9 +176,17 @@
         <p class="hero-sub">
           A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim your time back.
         </p>
+        
         <div class="btn-group">
           <a href="#early-access" class="btn btn-primary">Request Early Access</a>
           <a href="#features" class="btn btn-secondary">Explore Features</a>
+        </div>
+
+        <div class="badge-container">
+          <div class="badge-item"><img src="asset/badge_1.png" alt="Badge 1"></div>
+          <div class="badge-item"><img src="asset/badge_2.png" alt="Badge 2"></div>
+          <div class="badge-item"><img src="asset/badge_3.png" alt="Badge 3"></div>
+          <div class="badge-item"><img src="asset/badge_4.png" alt="Badge 4"></div>
         </div>
       </div>
 
