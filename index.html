@@ -78,7 +78,7 @@
 
     .h1 {
       font-weight: 900;
-      margin: 0 0 32px 0;
+      margin: 0; /* Removed bottom margin since we use margin-top on the subtext now */
       display: flex;
       flex-direction: column;
       line-height: 0.85; 
@@ -105,6 +105,7 @@
       font-size: 20px;
       color: var(--text-muted);
       max-width: 520px;
+      margin-top: 40px; /* INCREASED THIS: To move the subtext down away from the Clarity 'y' */
       margin-bottom: 48px;
     }
 
@@ -154,7 +155,7 @@
 
     @media (max-width: 1100px) {
       .hero { flex-direction: column; text-align: center; align-items: center; }
-      .hero-sub { margin: 0 auto 40px; }
+      .hero-sub { margin: 40px auto 40px; }
       .btn-group { justify-content: center; }
       .h1 .clarity-word { letter-spacing: -4px; }
       .hero-image { flex: 0 0 auto; max-width: 320px; }
