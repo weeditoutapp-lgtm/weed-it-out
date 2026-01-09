@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Weed It Out — Take control of your cannabis use</title>
+  <meta name="description" content="Weed It Out helps you track urges, sessions, clarity, and time back — with a clean, gamified experience." />
+  <style>
+    :root{
+      --bg-0:#0b1220;          /* sampled from your screenshots */
+      --bg-1:#070d18;
+      --card:#0f172a;          /* card base */
+      --card-2:#0c1426;
+      --text:#e7eefc;
+      --muted:rgba(231,238,252,.72);
+      --muted2:rgba(231,238,252,.55);
+      --border:rgba(255,255,255,.08);
+      --border2:rgba(255,255,255,.06);
+      --shadow:rgba(0,0,0,.45);
+
+      /* sampled green button */
+      --accent:#3CCA60;
+      --accent-2:#2fb455;
+
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:16px;
+
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 50% -120px, rgba(90,120,255,.18), transparent 65%),
+        radial-gradient(900px 700px at 85% 10%, rgba(60,202,96,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 55%, #050812 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 72px;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 2px 0;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border:1px solid var(--border2);
+      border-radius:999px;
+      background:rgba(15,23,42,.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;background:var(--accent);
+      box-shadow:0 0 0 6px rgba(60,202,96,.12);
+    }
+
+    .hero{
+      padding:54px 0 32px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
+      align-items:center;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:36px}
+    }
+
+    .h1{
+      font-size: clamp(40px, 5.4vw, 68px);
+      line-height:1.02;
+      margin:10px 0 12px;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      font-size: clamp(16px, 2.2vw, 20px);
+      color:var(--muted);
+      line-height:1.55;
+      max-width:55ch;
+      margin:0 0 22px;
+    }
+    .ctaRow{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+      color:#071217;
+      font-weight:800;
+      padding:16px 22px;
+      border-radius:18px;
+      min-width:220px;
+      text-align:center;
+      box-shadow:
+        0 18px 40px rgba(60,202,96,.18),
+        0 10px 22px rgba(0,0,0,.35);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); filter:saturate(1.03)}
+    .btn:active{transform: translateY(0px)}
+    .btn.secondary{
+      min-width:auto;
+      background: rgba(15,23,42,.38);
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+      font-weight:700;
+    }
+    .note{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:14px;
+    }
+    .note a{color:var(--text); text-decoration:none; border-bottom:1px solid rgba(231,238,252,.25)}
+    .note a:hover{border-bottom-color:rgba(231,238,252,.6)}
+
+    .heroCard{
+      position:relative;
+      border-radius: var(--radius-xl);
+      padding:28px 22px;
+      background: linear-gradient(180deg, rgba(15,23,42,.74) 0%, rgba(12,20,38,.64) 100%);
+      border:1px solid var(--border2);
+      box-shadow:
+        0 28px 70px var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(800px 500px at 20% 10%, rgba(60,202,96,.16), transparent 60%),
+                  radial-gradient(700px 500px at 80% 0%, rgba(90,120,255,.18), transparent 55%);
+      opacity:.55;
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+    .logoRing{
+      width:132px; height:132px; border-radius:999px;
+      margin:6px auto 14px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      display:grid; place-items:center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .logo{
+      width:98px;height:98px;border-radius:999px;
+      background: var(--accent);
+      display:grid; place-items:center;
+      box-shadow: 0 18px 40px rgba(60,202,96,.25);
+    }
+    .miniTitle{
+      text-align:center;
+      font-size:34px;
+      letter-spacing:-.3px;
+      margin:0;
+      font-weight:900;
+    }
+    .miniSub{
+      text-align:center; margin:8px 0 0;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .feature{
+      border-radius: var(--radius-lg);
+      padding:18px 16px;
+      background: rgba(15,23,42,.46);
+      border:1px solid var(--border2);
+      box-shadow: 0 14px 30px rgba(0,0,0,.28);
+    }
+    .feature h3{margin:0 0 6px; font-size:16px; letter-spacing:-.2px}
+    .feature p{margin:0; color:var(--muted); line-height:1.45; font-size:14px}
+
+    .section{
+      margin-top:44px;
+      padding-top:6px;
+    }
+    .sectionHeader{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .sectionHeader h2{
+      margin:0;
+      font-size: clamp(22px, 3.4vw, 34px);
+      letter-spacing:-.4px;
+    }
+    .sectionHeader .hint{color:var(--muted2); font-size:14px}
+
+    .cards2{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 900px){ .cards2{grid-template-columns:1fr} }
+    .card{
+      border-radius: var(--radius-xl);
+      padding:22px 18px;
+      background: linear-gradient(180deg, rgba(15,23,42,.66) 0%, rgba(12,20,38,.58) 100%);
+      border:1px solid var(--border2);
+      box-shadow: 0 24px 60px rgba(0,0,0,.36);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .cardTitle{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:-.25px;
+      margin:0 0 8px;
+      font-size:18px;
+    }
+    .ico{
+      width:36px;height:36px;border-radius:12px;
+      display:grid; place-items:center;
+      background: rgba(60,202,96,.14);
+      border:1px solid rgba(60,202,96,.24);
+      box-shadow: 0 14px 30px rgba(60,202,96,.10);
+    }
+    .card p{margin:0; color:var(--muted); line-height:1.55}
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+      margin:30px 0 18px;
+    }
+
+    .footer{
+      margin-top:44px;
+      padding-top:18px;
+      color:var(--muted2);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+    .footer a{color:var(--muted); text-decoration:none; border-bottom:1px solid rgba(231,238,252,.18)}
+    .footer a:hover{border-bottom-color:rgba(231,238,252,.6)}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      color:rgba(231,238,252,.65);
+      border:1px solid rgba(255,255,255,.10);
+      padding:2px 6px; border-radius:8px;
+      background: rgba(15,23,42,.36);
+    }
+
+    /* subtle “app” feel on section anchors */
+    .anchor{scroll-margin-top:24px}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Weed It Out</span>
+      </div>
+      <div class="pill" title="Early build">
+        <span class="kbd">iOS</span>
+        <span>In development</span>
+      </div>
+    </div>
+
+    <main class="hero">
+      <section>
+        <div class="pill" style="margin-top:14px;">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Track urges • sessions • time back</span>
+        </div>
+
+        <h1 class="h1">Take control of your cannabis use.</h1>
+        <p class="sub">
+          Weed It Out is a clean, gamified tracker that helps you log urges and sessions,
+          protect your “Clarity,” and see how much time you’re getting back.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn" href="#contact">Get Started</a>
+          <a class="btn secondary" href="#features">See how it works</a>
+        </div>
+
+        <div class="note">
+          Already have an account? <a href="#contact">Log in</a>
+          <span style="opacity:.55;">(coming soon)</span>
+        </div>
+
+        <div class="grid" style="margin-top:22px;">
+          <div class="feature">
+            <h3>Clarity score</h3>
+            <p>Stay accountable with a simple score that responds to choices in real time.</p>
+          </div>
+          <div class="feature">
+            <h3>Time back</h3>
+            <p>Turn resisted urges into reclaimed minutes — tracked automatically.</p>
+          </div>
+          <div class="feature">
+            <h3>Avoided containers</h3>
+            <p>Visual milestones for bong rips, joints, pens, and edibles avoided.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="heroCard" aria-label="Preview">
+        <div style="position:relative; z-index:1;">
+          <h2 class="miniTitle">Weed It Out</h2>
+          <div class="logoRing" aria-hidden="true">
+            <div class="logo">
+              <!-- Minimal icon that matches your app’s look: axes + stepped decline + leaf -->
+              <svg width="60" height="60" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path d="M14 14v36h36" stroke="#071217" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 28h10l6 6h8l6 6h6" stroke="#071217" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M28 20c3 3 4 7 2 10c-3-1-7-5-8-8c3 0 4-1 6-2z" fill="#071217"/>
+                <path d="M27 22c-3 1-6 0-8-2c3-1 7 0 9 2c0 0-1 0-1 0z" fill="#071217" opacity=".95"/>
+                <path d="M28 20c1-3 4-6 8-7c-1 3-4 7-8 7z" fill="#071217" opacity=".92"/>
+              </svg>
+            </div>
+          </div>
+          <p class="miniSub">A simple system. Real momentum.</p>
+
+          <div class="divider"></div>
+
+          <div style="display:grid; gap:10px;">
+            <div class="pill" style="justify-content:center;">
+              <span style="font-weight:800; color:#e7eefc;">100</span>
+              <span>Clarity</span>
+            </div>
+            <div class="pill" style="justify-content:center;">
+              <span style="font-weight:800; color:#e7eefc;">1.05g</span>
+              <span>avoided (sample)</span>
+            </div>
+          </div>
+
+          <div style="margin-top:14px; text-align:center; color:rgba(231,238,252,.55); font-size:12px;">
+            Tip: drop your real screenshots into this page later.
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <section id="features" class="section anchor">
+      <div class="sectionHeader">
+        <h2>How it works</h2>
+        <div class="hint">Built to feel like your app: dark cards, subtle glow, clean typography.</div>
+      </div>
+
+      <div class="cards2">
+        <div class="card">
+          <div class="cardTitle">
+            <span class="ico" aria-hidden="true">🧠</span>
+            Log urges in seconds
+          </div>
+          <p>When you resist, you keep your clarity. When you use, you spend it — especially during a Weed‑Out time.</p>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">
+            <span class="ico" aria-hidden="true">📈</span>
+            See the story of your day
+          </div>
+          <p>Clarity over time, daily summaries, and progress that makes it obvious what’s working.</p>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">
+            <span class="ico" aria-hidden="true">🏆</span>
+            Earn badges & milestones
+          </div>
+          <p>Unlock achievements by resisting urges, building streaks, and stacking real “wins.”</p>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">
+            <span class="ico" aria-hidden="true">⏱️</span>
+            Convert resistance into time back
+          </div>
+          <p>Track the minutes you reclaim — and direct them into the life you’d rather be living.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section anchor">
+      <div class="sectionHeader">
+        <h2>Contact</h2>
+        <div class="hint">Use this URL as your “Brand Website” for Posted.</div>
+      </div>
+
+      <div class="card">
+        <div class="cardTitle">
+          <span class="ico" aria-hidden="true">✉️</span>
+          Get in touch
+        </div>
+        <p style="margin-bottom:12px;">
+          Email: <a href="mailto:hello@weeditout.app" style="color:var(--text); text-decoration:none; border-bottom:1px solid rgba(231,238,252,.25);">hello@weeditout.app</a>
+          <span style="color:var(--muted2);"> (replace with your real email)</span>
+        </p>
+        <div class="ctaRow">
+          <a class="btn" href="mailto:hello@weeditout.app?subject=Weed%20It%20Out%20—%20Early%20Access">Request early access</a>
+          <a class="btn secondary" href="#features">Back to features</a>
+        </div>
+        <p style="margin-top:14px; color:var(--muted2); font-size:13px;">
+          Privacy-first note: This page is informational and does not collect personal data unless you email us.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="y"></span> Weed It Out. All rights reserved.</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#contact">Support</a>
+        <a href="#" onclick="alert('Add a real Privacy Policy page when you’re ready. For now, a simple placeholder is fine for Posted.'); return false;">Privacy</a>
+        <a href="#" onclick="alert('Add Terms when you’re ready.'); return false;">Terms</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
