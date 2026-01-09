@@ -50,7 +50,25 @@
       justify-content: space-between;
       align-items: center;
     }
-    .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-img {
+      width: 40px; /* Slightly bigger as requested */
+      height: auto;
+      display: block;
+    }
+
+    .logo-text { 
+      font-weight: 800; 
+      font-size: 20px; 
+      letter-spacing: -0.5px; 
+    }
+
     .status-pill {
       background: var(--glass);
       border: 1px solid var(--border);
@@ -82,9 +100,8 @@
       display: flex;
       flex-direction: column;
       line-height: 0.85;
-      /* FIX: This forces the headline to the front layer */
       position: relative;
-      z-index: 10; 
+      z-index: 10; /* Ensures Clarity sits on top of any background boxes */
     }
 
     .h1 .master-text {
@@ -110,9 +127,8 @@
       max-width: 520px;
       margin-top: 40px; 
       margin-bottom: 48px;
-      /* FIX: This keeps the subtext behind the headline layer */
       position: relative;
-      z-index: 1;
+      z-index: 1; /* Keep subtext behind Clarity's 'y' */
     }
 
     .btn-group { display: flex; gap: 16px; }
@@ -174,12 +190,9 @@
 
   <div class="container">
     <nav>
-      <div class="logo-text">
-        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="32" fill="#3CCA60"/>
-            <path d="M20 28h10l6 6h8l6 6h6" stroke="#050812" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        Weed It Out
+      <div class="logo-group">
+        <img src="assets/new_light_logo.png" alt="Weed It Out Logo" class="logo-img">
+        <div class="logo-text">Weed It Out</div>
       </div>
       <div class="status-pill">
         <div class="dot"></div> iOS Development
