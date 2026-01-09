@@ -10,54 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-    // Your specific Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCSa5pBKRLDcNfXJuJtMRIpj7HjqjptEHM",
-      authDomain: "weeditout-8e16b.firebaseapp.com",
-      projectId: "weeditout-8e16b",
-      storageBucket: "weeditout-8e16b.appspot.com",
-      messagingSenderId: "438928954752",
-      appId: "1:438928954752:web:9a1a36db3f3b9b38eedd65",
-      measurementId: "G-X0C9VX6CE0"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // Attach logic to the window so the button can see it
-    window.submitEmail = async function() {
-      const emailInput = document.getElementById('emailInput');
-      const email = emailInput.value;
-      const modalForm = document.getElementById('modalForm');
-      const successMessage = document.getElementById('successMessage');
-
-      if (email && email.includes('@')) {
-        try {
-          // Saving to "waitlist" collection
-          await addDoc(collection(db, "waitlist"), {
-            email: email,
-            source: "landing_page",
-            createdAt: serverTimestamp()
-          });
-
-          // Show success state
-          modalForm.style.display = 'none';
-          successMessage.style.display = 'block';
-        } catch (error) {
-          console.error("Firebase Error: ", error);
-          alert("Error joining waitlist. Please check your connection.");
-        }
-      } else {
-        alert("Please enter a valid email address.");
-      }
-    };
-  </script>
-
   <style>
     :root {
       --bg-deep: #050812;
@@ -171,7 +123,7 @@
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     .floating { animation: float 6s ease-in-out infinite; }
 
-    /* MODAL STYLES */
+    /* MODAL (POPUP) STYLES */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(5, 8, 18, 0.85); backdrop-filter: blur(12px);
@@ -191,6 +143,7 @@
     .modal-input:focus { border-color: var(--accent); }
     .close-btn { position: absolute; top: 15px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 24px; }
 
+    /* Success State */
     #successMessage { display: none; padding: 20px 0; }
     #successMessage h3 { color: var(--accent); margin-bottom: 8px; }
 
@@ -274,17 +227,33 @@
   </div>
 
   <script>
-    // Local UI helpers
     const modal = document.getElementById('emailModal');
-    
+    const modalForm = document.getElementById('modalForm');
+    const successMessage = document.getElementById('successMessage');
+
     function openModal() {
       modal.style.display = 'flex';
-      document.getElementById('modalForm').style.display = 'block';
-      document.getElementById('successMessage').style.display = 'none';
+      // Reset state in case they open it again
+      modalForm.style.display = 'block';
+      successMessage.style.display = 'none';
     }
 
     function closeModal() {
       modal.style.display = 'none';
+    }
+
+    function submitEmail() {
+      const email = document.getElementById('emailInput').value;
+      if (email && email.includes('@')) {
+        // Here is where you would normally send 'email' to a database (e.g., Firebase, Airtable)
+        console.log("Email captured:", email);
+        
+        // Show success state
+        modalForm.style.display = 'none';
+        successMessage.style.display = 'block';
+      } else {
+        alert("Please enter a valid email address.");
+      }
     }
 
     window.onclick = function(event) {
