@@ -35,6 +35,7 @@
       overflow-x: hidden;
     }
 
+    /* Animated Mesh Background */
     .mesh-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -44,8 +45,9 @@
         radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 40%);
     }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+    /* Nav */
     nav {
       padding: 32px 0;
       display: flex;
@@ -65,20 +67,25 @@
     }
     .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
-    /* Hero Section - Rebalanced Grid */
+    /* Hero Section - Balanced Horizontal/Vertical */
     .hero {
-      padding: 60px 0 100px;
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr; /* Wider text area, slimmer phone area */
-      gap: 40px;
+      padding: 80px 0 120px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
+      gap: 60px;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 650px; /* Forces text to take up more horizontal room */
     }
 
     .h1 {
-      font-size: clamp(52px, 7vw, 88px);
-      line-height: 0.85; /* Tighter line height for that modern 'boxy' wide look */
+      font-size: clamp(56px, 8vw, 92px);
+      line-height: 0.85; /* Tighter leading for the "Master your Clarity" visual */
       font-weight: 900;
-      letter-spacing: -4px;
+      letter-spacing: -4.5px;
       margin: 0 0 24px 0;
       background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
       -webkit-background-clip: text;
@@ -86,9 +93,9 @@
     }
 
     .hero-sub {
-      font-size: 20px;
+      font-size: 22px;
       color: var(--text-muted);
-      max-width: 520px;
+      max-width: 540px;
       margin-bottom: 40px;
     }
 
@@ -116,62 +123,42 @@
     }
     .btn-secondary:hover { background: rgba(255,255,255,0.08); }
 
-    /* Clean Mockup Image Fix */
+    /* Cleaned Up Phone Mockup */
     .hero-image {
-        position: relative;
-        width: 100%;
-        max-width: 340px; /* Constrains phone width so it doesn't look stretched */
-        margin-left: auto;
+      flex: 0 0 360px; /* Constrains the vertical phone width */
     }
 
     .phone-frame {
-        border-radius: 44px;
-        overflow: hidden;
-        border: 7px solid #1e293b;
-        box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
-        background: #000;
-        line-height: 0; /* Removes tiny gaps at bottom of image */
+      position: relative;
+      border-radius: 48px;
+      overflow: hidden;
+      border: 8px solid #1e293b;
+      box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
+      background: #000;
+      line-height: 0;
     }
 
     .phone-frame img {
-        width: 100%;
-        height: auto;
-        display: block;
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    /* Features Section */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 100px;
-    }
-    .f-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: var(--radius);
-      backdrop-filter: blur(12px);
-      transition: border 0.3s ease;
-    }
-    .f-card:hover { border-color: rgba(60, 202, 96, 0.4); }
-    .f-icon { font-size: 32px; margin-bottom: 20px; display: block; }
-    .f-card h3 { margin: 0 0 12px; font-size: 22px; }
-    .f-card p { color: var(--text-muted); margin: 0; }
-
+    /* Floating Animation */
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
     }
     .floating { animation: float 6s ease-in-out infinite; }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 0; }
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .hero { flex-direction: column; text-align: center; padding: 40px 0; }
+      .hero-content { max-width: 100%; }
       .h1 { letter-spacing: -2px; }
       .hero-sub { margin: 0 auto 40px; }
       .btn-group { justify-content: center; }
-      .hero-image { margin: 40px auto 0; }
+      .hero-image { margin-top: 60px; max-width: 320px; }
     }
   </style>
 </head>
@@ -212,40 +199,7 @@
       </div>
     </main>
 
-    <section id="features" class="features-grid">
-        <div class="f-card">
-            <span class="f-icon">🧠</span>
-            <h3>Clarity Score</h3>
-            <p>Every resisted urge boosts your clarity. Every session spends it. Watch your mental momentum grow in real-time.</p>
-        </div>
-        <div class="f-card">
-            <span class="f-icon">⏳</span>
-            <h3>Time Gained</h3>
-            <p>We don't just track days; we track minutes. See exactly how much life you've reclaimed from the fog.</p>
-        </div>
-        <div class="f-card">
-            <span class="f-icon">🏆</span>
-            <h3>Gamified Wins</h3>
-            <p>Earn badges for early morning resistance, night owl streaks, and hitting financial milestones.</p>
-        </div>
-    </section>
-
-    <section id="early-access" style="text-align: center; padding-bottom: 100px;">
-        <div class="f-card" style="max-width: 600px; margin: 0 auto;">
-            <h2>Ready to weed it out?</h2>
-            <p style="margin-bottom: 30px;">Be the first to know when we launch on the App Store.</p>
-            <a href="mailto:weeditout.app@gmail.com" class="btn btn-primary" style="display: inline-block;">Email for Early Access</a>
-        </div>
-    </section>
-
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
-        <div>© 2026 Weed It Out</div>
-        <div style="display: flex; gap: 20px;">
-            <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
-            <a href="#" style="color: inherit; text-decoration: none;">Support</a>
-        </div>
-    </footer>
-  </div>
+    </div>
 
 </body>
 </html>
