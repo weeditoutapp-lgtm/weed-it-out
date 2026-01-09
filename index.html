@@ -128,16 +128,16 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      line-height: 0.95; /* Increased from 0.85 for slightly more air */
+      line-height: 1.05; /* Balanced spacing between lines */
       position: relative; 
       z-index: 999 !important; 
     }
 
     .h1 .master-text {
       font-size: clamp(32px, 4.5vw, 58px);
-      letter-spacing: -2px;
+      letter-spacing: -1px; /* Less cramped horizontally */
       color: #fff;
-      padding-bottom: 8px; /* Specifically pushes Clarity down just a touch */
+      padding-bottom: 4px; 
     }
 
     .h1 .clarity-word {
@@ -145,7 +145,7 @@
       background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -6px;
+      letter-spacing: -2px; /* Much less negative than before to prevent letter touching */
       filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
     }
 
