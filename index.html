@@ -63,13 +63,12 @@
     }
     .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
-    /* Hero Section */
     .hero {
-      padding: 80px 0;
+      padding: 100px 0;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 40px;
+      align-items: flex-start;
+      gap: 60px;
     }
 
     .hero-content {
@@ -77,37 +76,37 @@
       z-index: 2;
     }
 
+    /* Stacking the text to make Clarity wide below */
     .h1 {
       font-weight: 900;
       margin: 0 0 32px 0;
       display: flex;
-      flex-direction: column; /* Stacks the words */
-      line-height: 0.9;
+      flex-direction: column;
+      line-height: 0.85; /* Tighter spacing for modern look */
     }
 
     .h1 .master-text {
-      font-size: clamp(32px, 4vw, 54px);
+      font-size: clamp(32px, 4.5vw, 58px);
       letter-spacing: -2px;
       color: #fff;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
-    /* Massive Clarity word */
     .h1 .clarity-word {
-      font-size: clamp(64px, 10vw, 130px); /* Massive size to cover horizontal space */
+      font-size: clamp(70px, 12vw, 140px); /* Massive focus word */
       background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -6px;
-      margin-top: -5px;
-      filter: drop-shadow(0 0 20px rgba(60, 202, 96, 0.25));
+      margin-top: 5px;
+      filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
     }
 
     .hero-sub {
       font-size: 20px;
       color: var(--text-muted);
-      max-width: 500px;
-      margin-bottom: 40px;
+      max-width: 520px;
+      margin-bottom: 48px;
     }
 
     .btn-group { display: flex; gap: 16px; }
@@ -131,19 +130,16 @@
       backdrop-filter: blur(10px);
     }
 
-    /* Phone Mockup */
     .hero-image {
-      flex: 0 0 360px;
-      position: relative;
+      flex: 0 0 380px;
     }
 
     .phone-frame {
-      border-radius: 44px;
+      border-radius: 48px;
       overflow: hidden;
       border: 8px solid #1e293b;
-      box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
+      box-shadow: 0 60px 120px -20px rgba(0,0,0,0.8);
       background: #000;
-      line-height: 0;
     }
 
     .phone-frame img {
@@ -158,10 +154,11 @@
     .floating { animation: float 6s ease-in-out infinite; }
 
     @media (max-width: 1100px) {
-      .hero { flex-direction: column; text-align: center; }
+      .hero { flex-direction: column; text-align: center; align-items: center; }
       .hero-sub { margin: 0 auto 40px; }
       .btn-group { justify-content: center; }
-      .h1 .clarity-word { letter-spacing: -3px; }
+      .h1 .clarity-word { letter-spacing: -4px; }
+      .hero-image { flex: 0 0 auto; max-width: 320px; }
     }
   </style>
 </head>
@@ -187,7 +184,7 @@
       <div class="hero-content">
         <h1 class="h1">
             <span class="master-text">Master your</span>
-            <span class="clarity-word">Clarity</span>
+            <span class="clarity-word">Clarity.</span>
         </h1>
         <p class="hero-sub">
           A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim the time you've earned back.
