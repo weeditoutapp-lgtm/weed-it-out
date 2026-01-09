@@ -44,7 +44,6 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* ONLY ADDED: Header styling for the sleek green line */
     header {
       border-bottom: 1px solid rgba(60, 202, 96, 0.2);
       box-shadow: 0 4px 20px -12px rgba(60, 202, 96, 0.3);
@@ -56,14 +55,13 @@
     }
 
     nav {
-      padding: 20px 0; /* Adjusted slightly for the new header wrapper */
+      padding: 20px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
     
-    /* MODIFIED: Pill to look more like the "sleek green line" aesthetic */
     .status-pill {
       background: rgba(60, 202, 96, 0.05);
       border: 1px solid var(--accent);
@@ -81,21 +79,23 @@
       padding: 100px 0;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center; /* Vertical centering with the dashboard image */
       gap: 60px;
     }
 
     .hero-content {
       flex: 1;
-      z-index: 2;
+      position: relative;
     }
 
     .h1 {
       font-weight: 900;
-      margin: 0 0 32px 0;
+      margin: 0;
       display: flex;
       flex-direction: column;
       line-height: 0.85; 
+      position: relative;
+      z-index: 10; /* Ensures Clarity stays on top */
     }
 
     .h1 .master-text {
@@ -119,7 +119,10 @@
       font-size: 20px;
       color: var(--text-muted);
       max-width: 520px;
+      margin-top: 10px; /* Space between the Clarity 'y' and the text box */
       margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
     }
 
     .btn-group { display: flex; gap: 16px; }
@@ -168,7 +171,7 @@
 
     @media (max-width: 1100px) {
       .hero { flex-direction: column; text-align: center; align-items: center; }
-      .hero-sub { margin: 0 auto 40px; }
+      .hero-sub { margin: 10px auto 40px; }
       .btn-group { justify-content: center; }
       .h1 .clarity-word { letter-spacing: -4px; }
       .hero-image { flex: 0 0 auto; max-width: 320px; }
