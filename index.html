@@ -44,34 +44,22 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    header {
-      border-bottom: 1px solid rgba(60, 202, 96, 0.2);
-      box-shadow: 0 4px 20px -12px rgba(60, 202, 96, 0.3);
-      background: rgba(5, 8, 18, 0.8);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
     nav {
-      padding: 20px 0;
+      padding: 32px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
-    
     .status-pill {
-      background: rgba(60, 202, 96, 0.05);
-      border: 1px solid var(--accent);
+      background: var(--glass);
+      border: 1px solid var(--border);
       padding: 6px 14px;
       border-radius: 100px;
       font-size: 12px;
       color: var(--accent);
       font-weight: 600;
       display: flex; align-items: center; gap: 8px;
-      box-shadow: 0 0 10px rgba(60, 202, 96, 0.1);
     }
     .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
@@ -79,23 +67,21 @@
       padding: 100px 0;
       display: flex;
       justify-content: space-between;
-      align-items: center; /* Vertical centering with the dashboard image */
+      align-items: flex-start;
       gap: 60px;
     }
 
     .hero-content {
       flex: 1;
-      position: relative;
+      z-index: 2;
     }
 
     .h1 {
       font-weight: 900;
-      margin: 0;
+      margin: 0 0 32px 0;
       display: flex;
       flex-direction: column;
       line-height: 0.85; 
-      position: relative;
-      z-index: 10; /* Ensures Clarity stays on top */
     }
 
     .h1 .master-text {
@@ -119,10 +105,7 @@
       font-size: 20px;
       color: var(--text-muted);
       max-width: 520px;
-      margin-top: 10px; /* Space between the Clarity 'y' and the text box */
       margin-bottom: 48px;
-      position: relative;
-      z-index: 1;
     }
 
     .btn-group { display: flex; gap: 16px; }
@@ -171,7 +154,7 @@
 
     @media (max-width: 1100px) {
       .hero { flex-direction: column; text-align: center; align-items: center; }
-      .hero-sub { margin: 10px auto 40px; }
+      .hero-sub { margin: 0 auto 40px; }
       .btn-group { justify-content: center; }
       .h1 .clarity-word { letter-spacing: -4px; }
       .hero-image { flex: 0 0 auto; max-width: 320px; }
@@ -182,24 +165,20 @@
 
   <div class="mesh-bg"></div>
 
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo-text">
-          <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="32" fill="#3CCA60"/>
-              <path d="M20 28h10l6 6h8l6 6h6" stroke="#050812" stroke-width="4" stroke-linecap="round"/>
-          </svg>
-          Weed It Out
-        </div>
-        <div class="status-pill">
-          <div class="dot"></div> iOS Development
-        </div>
-      </nav>
-    </div>
-  </header>
-
   <div class="container">
+    <nav>
+      <div class="logo-text">
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="32" fill="#3CCA60"/>
+            <path d="M20 28h10l6 6h8l6 6h6" stroke="#050812" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        Weed It Out
+      </div>
+      <div class="status-pill">
+        <div class="dot"></div> iOS Development
+      </div>
+    </nav>
+
     <main class="hero">
       <div class="hero-content">
         <h1 class="h1">
