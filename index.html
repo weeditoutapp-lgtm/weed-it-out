@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
   <title>Weed It Out — Reclaim your clarity</title>
-  <meta name="description" content="A gamified cannabis cessation and moderation tool designed to help you track urges and reclaim your time." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,7 +20,6 @@
       --text-muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
       --glass: rgba(255, 255, 255, 0.03);
-      --radius: 24px;
     }
 
     * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -31,23 +29,21 @@
       font-family: 'Inter', system-ui, sans-serif;
       background-color: var(--bg-deep);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.4;
       overflow-x: hidden;
     }
 
-    /* Animated Mesh Background */
     .mesh-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       z-index: -1;
       background: 
-        radial-gradient(circle at 20% 20%, rgba(60, 202, 96, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 40%);
+        radial-gradient(circle at 10% 20%, rgba(60, 202, 96, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* Nav */
     nav {
       padding: 32px 0;
       display: flex;
@@ -67,35 +63,44 @@
     }
     .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
 
-    /* Hero Section - Balanced Horizontal/Vertical */
+    /* Hero Section */
     .hero {
-      padding: 80px 0 120px;
+      padding: 100px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 60px;
+      gap: 40px;
     }
 
     .hero-content {
       flex: 1;
-      max-width: 650px; /* Forces text to take up more horizontal room */
+      z-index: 2;
     }
 
     .h1 {
-      font-size: clamp(56px, 8vw, 92px);
-      line-height: 0.85; /* Tighter leading for the "Master your Clarity" visual */
+      font-size: clamp(40px, 5.5vw, 72px);
       font-weight: 900;
-      letter-spacing: -4.5px;
+      letter-spacing: -3px;
       margin: 0 0 24px 0;
-      background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    /* Target "Clarity." specifically */
+    .h1 span.clarity-word {
+      font-size: 1.2em; /* Makes the word noticeably bigger */
+      background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 0 15px rgba(60, 202, 96, 0.4));
+      letter-spacing: -4px;
     }
 
     .hero-sub {
-      font-size: 22px;
+      font-size: 20px;
       color: var(--text-muted);
-      max-width: 540px;
+      max-width: 500px;
       margin-bottom: 40px;
     }
 
@@ -113,24 +118,21 @@
       color: #050812;
       box-shadow: 0 20px 40px var(--accent-glow);
     }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
-    
     .btn-secondary {
       background: var(--glass);
       color: white;
       border: 1px solid var(--border);
       backdrop-filter: blur(10px);
     }
-    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
 
-    /* Cleaned Up Phone Mockup */
+    /* Phone Mockup */
     .hero-image {
-      flex: 0 0 360px; /* Constrains the vertical phone width */
+      flex: 0 0 350px;
+      position: relative;
     }
 
     .phone-frame {
-      position: relative;
-      border-radius: 48px;
+      border-radius: 44px;
       overflow: hidden;
       border: 8px solid #1e293b;
       box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
@@ -140,25 +142,20 @@
 
     .phone-frame img {
       width: 100%;
-      height: auto;
       display: block;
     }
 
-    /* Floating Animation */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-20px); }
     }
     .floating { animation: float 6s ease-in-out infinite; }
 
-    /* Responsive */
-    @media (max-width: 1000px) {
-      .hero { flex-direction: column; text-align: center; padding: 40px 0; }
-      .hero-content { max-width: 100%; }
-      .h1 { letter-spacing: -2px; }
+    @media (max-width: 1100px) {
+      .h1 { white-space: normal; font-size: 56px; }
+      .hero { flex-direction: column; text-align: center; }
       .hero-sub { margin: 0 auto 40px; }
       .btn-group { justify-content: center; }
-      .hero-image { margin-top: 60px; max-width: 320px; }
     }
   </style>
 </head>
@@ -182,7 +179,7 @@
 
     <main class="hero">
       <div class="hero-content">
-        <h1 class="h1">Master your<br>Clarity.</h1>
+        <h1 class="h1">Master your <span class="clarity-word">Clarity.</span></h1>
         <p class="hero-sub">
           A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim the time you've earned back.
         </p>
@@ -198,8 +195,7 @@
         </div>
       </div>
     </main>
-
-    </div>
+  </div>
 
 </body>
 </html>
