@@ -78,10 +78,13 @@
 
     .h1 {
       font-weight: 900;
-      margin: 0; /* Removed bottom margin since we use margin-top on the subtext now */
+      margin: 0;
       display: flex;
       flex-direction: column;
-      line-height: 0.85; 
+      line-height: 0.85;
+      /* FIX: This forces the headline to the front layer */
+      position: relative;
+      z-index: 10; 
     }
 
     .h1 .master-text {
@@ -105,8 +108,11 @@
       font-size: 20px;
       color: var(--text-muted);
       max-width: 520px;
-      margin-top: 40px; /* INCREASED THIS: To move the subtext down away from the Clarity 'y' */
+      margin-top: 40px; 
       margin-bottom: 48px;
+      /* FIX: This keeps the subtext behind the headline layer */
+      position: relative;
+      z-index: 1;
     }
 
     .btn-group { display: flex; gap: 16px; }
