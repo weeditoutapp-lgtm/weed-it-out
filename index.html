@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b1220" />
-  <title>Weed It Out — Reclaim your clarity</title>
+  <title>Weed It Out — Premium Clarity</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -18,205 +17,113 @@
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
-      --glass: rgba(255, 255, 255, 0.03);
     }
 
     * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
     
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--bg-deep);
       color: var(--text-main);
-      line-height: 1.4;
       overflow-x: hidden;
-    }
-
-    .mesh-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: -1;
-      background: 
-        radial-gradient(circle at 10% 20%, rgba(60, 202, 96, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
+    /* NAVBAR */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      border-bottom: 1px solid var(--accent);
       background: rgba(5, 8, 18, 0.8);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(60, 202, 96, 0.1);
-      overflow: hidden;
     }
 
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: -100%;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      animation: sweep 8s linear infinite;
-      box-shadow: 0 0 15px var(--accent);
-    }
+    nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    .logo-text { font-weight: 800; font-size: 20px; }
 
-    @keyframes sweep {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    nav {
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo-img { width: 42px; height: auto; }
-    .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
-
-    .status-pill {
-      background: rgba(60, 202, 96, 0.05);
-      border: 1px solid var(--accent);
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
-    }
-
-    .dot { 
-      width: 6px; height: 6px; 
-      background: var(--accent); 
-      border-radius: 50%; 
-      box-shadow: 0 0 10px var(--accent); 
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
-
+    /* HERO */
     .hero {
-      padding: 80px 0;
+      padding: 100px 0 150px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 60px;
+      gap: 40px;
     }
 
-    .hero-content {
-      flex: 1;
-      position: relative;
-    }
+    .hero-content { flex: 1; margin-top: 40px; }
 
-    .h1 {
-      font-weight: 900;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05; /* Balanced spacing between lines */
-      position: relative; 
-      z-index: 999 !important; 
-    }
-
-    .h1 .master-text {
-      font-size: clamp(32px, 4.5vw, 58px);
-      letter-spacing: -1px; /* Less cramped horizontally */
-      color: #fff;
-      padding-bottom: 4px; 
-    }
-
-    .h1 .clarity-word {
-      font-size: clamp(70px, 12vw, 140px); 
-      background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -2px; /* Much less negative than before to prevent letter touching */
-      filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
+    .h1 { font-weight: 900; margin: 0; line-height: 0.95; }
+    .h1 .master-text { font-size: 64px; display: block; margin-bottom: 5px; }
+    .h1 .clarity-word { 
+        font-size: 140px; 
+        color: var(--accent); 
+        letter-spacing: -4px; 
+        filter: drop-shadow(0 0 20px var(--accent-glow));
     }
 
     .hero-sub {
       font-size: 20px;
       color: var(--text-muted);
-      max-width: 520px;
-      margin-top: 45px; 
-      margin-bottom: 48px;
+      max-width: 500px;
+      margin-top: 40px;
+    }
+
+    /* PHONE & BADGE PLACEMENT */
+    .visual-stack {
       position: relative;
-      z-index: 1; 
+      flex: 0 0 400px;
     }
 
-    .btn-group { display: flex; gap: 16px; }
-    .btn {
-      padding: 18px 32px;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-size: 16px;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #050812;
-      box-shadow: 0 20px 40px var(--accent-glow);
-    }
-    .btn-secondary {
-      background: var(--glass);
-      color: white;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-image { flex: 0 0 380px; }
     .phone-frame {
       border-radius: 48px;
-      overflow: hidden;
       border: 8px solid #1e293b;
-      box-shadow: 0 60px 120px -20px rgba(0,0,0,0.8);
+      background: #0d121f;
+      overflow: hidden;
+      box-shadow: 0 50px 100px rgba(0,0,0,0.6);
     }
-    .phone-frame img { width: 100%; display: block; }
+    .phone-frame img { width: 100%; display: block; opacity: 0.9; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+    /* THE BADGES LINE - Positioned to fill the space at the bottom half of the phone */
+    .badge-row {
+      position: absolute;
+      bottom: 80px; /* Positioned over the bottom half */
+      left: -60px; /* Spans across the phone width */
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+      width: 520px;
     }
-    .floating { animation: float 6s ease-in-out infinite; }
+
+    .badge {
+      background: rgba(13, 18, 31, 0.95);
+      border: 1px solid var(--accent);
+      padding: 10px 16px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      white-space: nowrap;
+    }
+
+    .badge-icon { font-size: 18px; }
+    .badge-label { font-size: 13px; font-weight: 700; color: #fff; }
 
     @media (max-width: 1100px) {
-      .hero { flex-direction: column; text-align: center; align-items: center; }
-      .hero-sub { margin: 45px auto 40px; }
-      .btn-group { justify-content: center; }
-      .hero-image { flex: 0 0 auto; max-width: 320px; }
+      .hero { flex-direction: column; align-items: center; text-align: center; }
+      .visual-stack { flex: 0 0 auto; margin-top: 60px; }
+      .badge-row { left: 50%; transform: translateX(-50%); width: auto; bottom: 40px; }
+      .h1 .clarity-word { font-size: 100px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="mesh-bg"></div>
-
   <header>
     <div class="container">
       <nav>
-        <div class="logo-group">
-          <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
-          <div class="logo-text">Weed It Out</div>
-        </div>
-        <div class="status-pill">
-          <div class="dot"></div> iOS Development
-        </div>
+        <div class="logo-text">Weed It Out</div>
+        <div style="font-size: 12px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); padding: 4px 12px; border-radius: 100px;">BETA</div>
       </nav>
     </div>
   </header>
@@ -229,17 +136,28 @@
             <span class="clarity-word">Clarity</span>
         </h1>
         <p class="hero-sub">
-          A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim your time back.
+          Track avoided Bong Rips, Joints, and Edibles while reclaiming your time and money.
         </p>
-        <div class="btn-group">
-          <a href="#early-access" class="btn btn-primary">Request Early Access</a>
-          <a href="#features" class="btn btn-secondary">Explore Features</a>
-        </div>
       </div>
 
-      <div class="hero-image floating">
+      <div class="visual-stack">
+        <div class="badge-row">
+          <div class="badge">
+            <span class="badge-icon">💎</span>
+            <span class="badge-label">7 Day Streak</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">💰</span>
+            <span class="badge-label">$120 Saved</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">⏱️</span>
+            <span class="badge-label">42h Gained</span>
+          </div>
+        </div>
+
         <div class="phone-frame">
-          <img src="assets/dashboard_example.png" alt="Weed It Out Dashboard">
+          <img src="assets/dashboard_example.png" alt="App UI">
         </div>
       </div>
     </main>
