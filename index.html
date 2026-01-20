@@ -42,7 +42,7 @@
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       z-index: -1;
-      background: 
+      background:
         radial-gradient(circle at 10% 20%, rgba(60, 202, 96, 0.12) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
     }
@@ -81,16 +81,16 @@
     header::after { bottom: 0; left: -100%; }
     footer::before { top: 0; left: 100%; }
 
-    footer::before { 
-  animation: sweepReverse 6s linear infinite;
-}
-
+    footer::before {
+      animation: sweepReverse 6s linear infinite;
+    }
 
     @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
 
-    @keyframes sweepReverse {0%   { left: 100%; } 100% { left: -100%; }
-}
-
+    @keyframes sweepReverse {
+      0%   { left: 100%; }
+      100% { left: -100%; }
+    }
 
     nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
     .logo-group { display: flex; align-items: center; gap: 14px; }
@@ -167,9 +167,6 @@
       position: relative;
     }
 
-    /* subtle background illumination behind the row */ 
-
-
     .feature-card {
       position: relative;
       z-index: 1;
@@ -196,21 +193,20 @@
     }
 
     /* Hover-only spotlight glow behind each card */
-.feature-card::before {
-  content: "";
-  position: absolute;
-  inset: -60px;                 /* big so it fades naturally */
-  z-index: -1;                  /* behind the card */
-  background: radial-gradient(circle at 30% 35%, rgba(60, 202, 96, 0.22), transparent 62%);
-  filter: blur(18px);
-  opacity: 0;
-  transition: opacity 0.22s ease;
-  pointer-events: none;
-}
-.feature-card:hover::before {
-  opacity: 1;
-}
-
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: -60px;
+      z-index: -1;
+      background: radial-gradient(circle at 30% 35%, rgba(60, 202, 96, 0.22), transparent 62%);
+      filter: blur(18px);
+      opacity: 0;
+      transition: opacity 0.22s ease;
+      pointer-events: none;
+    }
+    .feature-card:hover::before {
+      opacity: 1;
+    }
 
     .feature-card:hover {
       transform: translateY(-4px);
@@ -446,12 +442,7 @@
         <h2>Get Early Access</h2>
         <p>Join the waitlist to be the first to experience the full version of Weed It Out.</p>
         <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
-        
-        <div id="errorText" style="display:none; color:#fca5a5; font-size:13px; text-align:left; margin:-8px 2px 14px;"></div>
-        <div style="color: var(--text-muted); font-size: 12px; text-align:left; margin:-6px 2px 18px;">
-          No spam. Unsubscribe anytime.
-        </div>
-<button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
+        <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
       </div>
 
       <div id="successMessage">
@@ -467,6 +458,8 @@
     const modalForm = document.getElementById('modalForm');
     const successMessage = document.getElementById('successMessage');
 
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjggooor";
+
     function openModal() {
       modal.style.display = 'flex';
       // Reset state in case they open it again
@@ -478,47 +471,25 @@
       modal.style.display = 'none';
     }
 
-    
-    // === WAITLIST BACKEND (Formspree) ===
-    // 1) Create a Formspree form and copy your endpoint URL (looks like https://formspree.io/f/abcdwxyz)
-    // 2) Paste it below and redeploy GitHub Pages.
-    const WAITLIST_ENDPOINT = "https://formspree.io/f/REPLACE_ME";
-
-    const emailInput = document.getElementById('emailInput');
-    const errorText = document.getElementById('errorText');
-
-    function showError(msg) {
-      errorText.textContent = msg;
-      errorText.style.display = 'block';
-    }
-    function clearError() {
-      errorText.textContent = '';
-      errorText.style.display = 'none';
-    }
-    function isValidEmail(email) {
-      // Simple, pragmatic validation (avoid over-rejecting)
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
     async function submitEmail() {
-      const email = (emailInput.value || '').trim();
-      clearError();
+      const emailEl = document.getElementById('emailInput');
+      const email = (emailEl.value || '').trim();
 
-      if (!isValidEmail(email)) {
-        showError("Please enter a valid email address.");
+      if (!email || !email.includes('@')) {
+        alert("Please enter a valid email address.");
         return;
       }
 
-      if (WAITLIST_ENDPOINT.includes("REPLACE_ME")) {
-        showError("Waitlist backend isn’t connected yet. Add your Formspree endpoint in the code.");
-        return;
+      // Prevent double-submits + show quick feedback
+      const btn = modalForm.querySelector('button');
+      const prevText = btn ? btn.textContent : null;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Joining...";
       }
-
-      const submitBtn = document.querySelector('#modalForm button.btn-primary');
-      if (submitBtn) submitBtn.disabled = true;
 
       try {
-        const res = await fetch(WAITLIST_ENDPOINT, {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -526,24 +497,25 @@
           },
           body: JSON.stringify({
             email,
-            page: window.location.href,
-            ts: new Date().toISOString()
+            source: "weeditout.app",
+            signup_at: new Date().toISOString()
           })
         });
 
-        if (!res.ok) throw new Error("Request failed");
+        if (!res.ok) throw new Error("Formspree submission failed");
 
-        // Success UI
+        // Show success state
         modalForm.style.display = 'none';
         successMessage.style.display = 'block';
-        emailInput.value = '';
-      } catch (e) {
-        showError("Couldn’t submit right now. Try again in a minute.");
+        emailEl.value = "";
+      } catch (err) {
+        alert("Couldn’t join right now. Please try again in a moment.");
       } finally {
-        if (submitBtn) submitBtn.disabled = false;
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = prevText || "Join Now";
+        }
       }
-    }
-
     }
 
     window.onclick = function(event) {
