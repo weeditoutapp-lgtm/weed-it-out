@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Weed It Out — Terms of Service</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,100..900;1,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #050812;
+      --accent: #3CCA60;
+      --accent-glow: rgba(60, 202, 96, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mesh-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(60, 202, 96, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(60, 202, 96, 0.1);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: sweep 6s linear infinite;
+      box-shadow: 0 0 15px var(--accent);
+      bottom: 0; left: -100%;
+    }
+
+    @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
+
+    nav {
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-group { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 34px; height: auto; }
+    .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+
+    .pill-link {
+      background: rgba(60, 202, 96, 0.05);
+      border: 1px solid var(--accent);
+      padding: 8px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .pill-link:hover { transform: translateY(-1px); background: rgba(60, 202, 96, 0.09); }
+
+    main { padding: 54px 0 70px; flex: 1; }
+
+    .page-title {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      line-height: 1.05;
+      font-size: clamp(34px, 4.2vw, 54px);
+    }
+
+    .page-sub {
+      margin: 14px 0 0;
+      color: var(--text-muted);
+      max-width: 70ch;
+      font-size: 16px;
+    }
+
+    .meta-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      color: rgba(255,255,255,0.88);
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+    }
+
+    .cards { margin-top: 26px; display: grid; gap: 14px; }
+
+    .card {
+      border: 1px solid rgba(60, 202, 96, 0.22);
+      background: rgba(255,255,255,0.02);
+      border-radius: 20px;
+      padding: 18px 18px 8px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .card p, .card li {
+      color: var(--text-muted);
+      margin: 0 0 10px;
+    }
+
+    .card ul { margin: 0 0 10px; padding-left: 18px; }
+    .card li { margin: 8px 0; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+      color: rgba(255,255,255,0.9);
+    }
+
+    footer {
+      margin-top: auto;
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(60, 202, 96, 0.1);
+      padding: 34px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: sweepReverse 6s linear infinite;
+      box-shadow: 0 0 15px var(--accent);
+      top: 0; left: 100%;
+    }
+
+    @keyframes sweepReverse { 0% { left: 100%; } 100% { left: -100%; } }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-muted { color: var(--text-muted); font-size: 13px; }
+    .footer-links { display: flex; gap: 18px; }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .disclaimer {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      max-width: 110ch;
+    }
+
+    @media (max-width: 900px) {
+      .container { max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mesh-bg"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo-group">
+          <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
+          <div class="logo-text">Weed It Out</div>
+        </div>
+
+        <a class="pill-link" href="./">Back to site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="page-sub">
+        These Terms govern your use of Weed It Out. Please read them carefully.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-pill">Effective Date: February 1, 2026</span>
+        <span class="meta-pill">Intended for users 21+</span>
+      </div>
+
+      <div class="cards">
+        <section class="card">
+          <h2>1) Acceptance of Terms</h2>
+          <p>
+            By downloading, accessing, or using Weed It Out (the “App”), you agree to these Terms of Service (“Terms”).
+            If you do not agree, do not use the App.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>2) Not Medical or Legal Advice</h2>
+          <p>
+            The App provides habit tracking and informational features only. It does not provide medical advice, diagnosis,
+            treatment, or legal advice. If you need medical or mental health support, consult a qualified professional.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>3) Eligibility (21+)</h2>
+          <p>
+            You must be <strong>21 years of age or older</strong> to use the App. By using the App, you represent that you are at least 21.
+            If you are not 21, do not use the App.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>4) Compliance With Laws</h2>
+          <p>
+            You are responsible for ensuring that your use of the App complies with all applicable laws, rules, and regulations
+            in your jurisdiction. The App is not intended to encourage or facilitate unlawful activity.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>5) Estimates and Informational Outputs</h2>
+          <p>
+            Any metrics, calculations, projections, or insights shown in the App (including usage amounts, “clarity” scores,
+            time saved, or money saved) are <strong>estimates</strong> for informational purposes only. They may be based on the
+            information you enter, assumptions, and generalized models, and may not reflect actual outcomes. We do not guarantee
+            accuracy, completeness, or results.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>6) License and Acceptable Use</h2>
+          <p>
+            We grant you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes.
+          </p>
+          <p>You agree not to:</p>
+          <ul>
+            <li>Reverse engineer, decompile, or attempt to derive source code from the App (except as permitted by law).</li>
+            <li>Interfere with security features, subscription controls, or the App’s operation.</li>
+            <li>Use the App to violate laws or infringe the rights of others.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>7) Subscriptions and Payments</h2>
+          <p>
+            If the App offers subscriptions or in-app purchases, payments are processed by Apple through your App Store account.
+            Trials (if offered) may convert to paid subscriptions unless canceled before renewal. You can manage or cancel subscriptions
+            through iOS Settings → Apple ID → Subscriptions. Refund requests are handled by Apple under its policies.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>8) User Responsibility and Conduct</h2>
+          <p>
+            You are solely responsible for your actions and decisions, including any substance-related behavior. The App is a tracking tool
+            and does not control or direct user conduct. To the fullest extent permitted by law, we are not responsible or liable for user behavior,
+            choices, or outcomes associated with cannabis use, reduction, or cessation.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>9) Intellectual Property</h2>
+          <p>
+            The App, including its design, branding, and content, is owned by the developer and protected by applicable intellectual property laws.
+            You may not copy, modify, distribute, or create derivative works except as permitted by these Terms.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>10) Disclaimers</h2>
+          <p>
+            The App is provided “as is” and “as available.” We do not guarantee the App will be uninterrupted, error-free, secure, or meet your requirements.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>11) Limitation of Liability</h2>
+          <p>
+            To the fullest extent permitted by law, we are not liable for any indirect, incidental, special, consequential, or punitive damages,
+            or any loss of data, profits, or goodwill arising from or related to your use of the App.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>12) Termination</h2>
+          <p>
+            We may suspend or terminate access to the App if you violate these Terms.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>13) Governing Law</h2>
+          <p>
+            These Terms are governed by the laws of the State of California, United States, without regard to conflict of law principles.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>14) Changes to These Terms</h2>
+          <p>
+            We may update these Terms from time to time. We will update the Effective Date and post the revised Terms here.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>15) Contact</h2>
+          <p>
+            Questions about these Terms: <a href="mailto:SUPPORT_EMAIL_HERE">SUPPORT_EMAIL_HERE</a>
+          </p>
+          <p style="color: rgba(255,255,255,0.62); font-size: 12px;">
+            Replace <code>SUPPORT_EMAIL_HERE</code> with your real support email before publishing.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-muted">Weed It Out</div>
+        <div class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="./support.html">Support</a>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
+        Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
