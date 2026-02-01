@@ -282,6 +282,46 @@
       max-width: 34ch;
     }
 
+    /* FOOTER LAYOUT (UPDATED) */
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .footer-links {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: flex-end;
+      white-space: nowrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .footer-disclaimer {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+      max-width: 110ch;
+    }
+
     /* MODAL (POPUP) STYLES */
     .modal-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -312,6 +352,10 @@
       .btn-group { justify-content: center; }
       .hero-image { flex: 0 0 auto; max-width: 320px; margin-top: 40px; }
       .feature-head { justify-content: center; }
+
+      /* Footer stacks cleanly on smaller widths */
+      .footer-content { flex-direction: column; align-items: flex-start; }
+      .footer-links { margin-left: 0; justify-content: flex-start; }
     }
 
     @media (max-width: 900px) {
@@ -341,9 +385,10 @@
     <main class="hero">
       <div class="hero-content">
         <h1 class="h1">
-            <span class="master-text">Master your</span>
-            <span class="clarity-word">Clarity</span>
+          <span class="master-text">Master your</span>
+          <span class="clarity-word">Clarity</span>
         </h1>
+
         <p class="hero-sub">
           A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim your time back.
         </p>
@@ -375,7 +420,6 @@
           <div class="feature-head">
             <h3 class="feature-title">Urges & Sessions</h3>
             <div class="feature-icon" aria-hidden="true">
-              <!-- Heart icon -->
               <svg viewBox="0 0 24 24">
                 <path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.6 9 4.6c-1.6-1.6-4.2-1.6-5.8 0s-1.6 4.2 0 5.8L12 21l8.8-10.6c1.6-1.6 1.6-4.2 0-5.8z"/>
               </svg>
@@ -391,7 +435,6 @@
           <div class="feature-head">
             <h3 class="feature-title">Avoided Costs</h3>
             <div class="feature-icon" aria-hidden="true">
-              <!-- Dollar icon -->
               <svg viewBox="0 0 24 24">
                 <path d="M12 2v20"/>
                 <path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5S9.2 10 12 10s5 1.6 5 3.5S14.8 17 12 17s-5-1.6-5-3.5"/>
@@ -408,126 +451,6 @@
           <div class="feature-head">
             <h3 class="feature-title">Reclaimed Time</h3>
             <div class="feature-icon" aria-hidden="true">
-              <!-- Clock icon -->
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v6l4 2"></path>
-              </svg>
-            </div>
-          </div>
-
-          <p class="feature-desc">Track clarity recovered and build momentum with streak-like progress.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-  <div class="footer-content">
-    <div class="logo-text">
-      Weed It Out
-    </div>
-
-    <div style="display: flex; gap: 20px;">
-      <a href="./privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy</a>
-      <a href="./terms.html" style="color: var(--text-muted); text-decoration: none;">Terms</a>
-    </div>
-
-    <div style="margin-top: 14px; color: var(--text-muted); font-size: 12px;">
-      <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
-      Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
-    </div>
-  </div>
-</footer>
-
-  <div class="modal-overlay" id="emailModal">
-    <div class="modal-card">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-
-      <div id="modalForm">
-        <h2>Get Early Access</h2>
-        <p>Join the waitlist to be the first to experience the full version of Weed It Out.</p>
-        <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
-        <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
-      </div>
-
-      <div id="successMessage">
-        <h3>You're on the list!</h3>
-        <p>We'll notify you upon Launch</p>
-        <button onclick="closeModal()" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('emailModal');
-    const modalForm = document.getElementById('modalForm');
-    const successMessage = document.getElementById('successMessage');
-
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjggooor";
-
-    function openModal() {
-      modal.style.display = 'flex';
-      // Reset state in case they open it again
-      modalForm.style.display = 'block';
-      successMessage.style.display = 'none';
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-
-    async function submitEmail() {
-      const emailEl = document.getElementById('emailInput');
-      const email = (emailEl.value || '').trim();
-
-      if (!email || !email.includes('@')) {
-        alert("Please enter a valid email address.");
-        return;
-      }
-
-      // Prevent double-submits + show quick feedback
-      const btn = modalForm.querySelector('button');
-      const prevText = btn ? btn.textContent : null;
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Joining...";
-      }
-
-      try {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            email,
-            source: "weeditout.app",
-            signup_at: new Date().toISOString()
-          })
-        });
-
-        if (!res.ok) throw new Error("Formspree submission failed");
-
-        // Show success state
-        modalForm.style.display = 'none';
-        successMessage.style.display = 'block';
-        emailEl.value = "";
-      } catch (err) {
-        alert("Couldn’t join right now. Please try again in a moment.");
-      } finally {
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = prevText || "Join Now";
-        }
-      }
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) closeModal();
-    }
-  </script>
-
-</body>
-</html>
+                <path d="M12 7v6l4 2"></
