@@ -22,8 +22,6 @@
     }
 
     * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
-    /* Smooth anchor scroll for #features */
     html { scroll-behavior: smooth; }
 
     body {
@@ -80,17 +78,10 @@
     }
     header::after { bottom: 0; left: -100%; }
     footer::before { top: 0; left: 100%; }
-
-    footer::before {
-      animation: sweepReverse 6s linear infinite;
-    }
+    footer::before { animation: sweepReverse 6s linear infinite; }
 
     @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
-
-    @keyframes sweepReverse {
-      0%   { left: 100%; }
-      100% { left: -100%; }
-    }
+    @keyframes sweepReverse { 0% { left: 100%; } 100% { left: -100%; } }
 
     nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
     .logo-group { display: flex; align-items: center; gap: 14px; }
@@ -120,10 +111,53 @@
 
     .hero-sub { font-size: 20px; color: var(--text-muted); max-width: 520px; margin-top: 45px; margin-bottom: 48px; position: relative; z-index: 1; }
 
-    .btn-group { display: flex; gap: 16px; }
+    .btn-group { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .btn { padding: 18px 32px; border-radius: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s ease; font-size: 16px; border: none; font-family: inherit; cursor: pointer; display: inline-block; }
     .btn-primary { background: var(--accent); color: #050812; box-shadow: 0 20px 40px var(--accent-glow); }
     .btn-secondary { background: var(--glass); color: white; border: 1px solid var(--border); backdrop-filter: blur(10px); }
+
+    /* SOCIALS (HERO) */
+    .hero-socials {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social-label {
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-right: 4px;
+    }
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(60, 202, 96, 0.38);
+      background: rgba(255,255,255,0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .social-icon:hover {
+      transform: translateY(-1px);
+      border-color: rgba(60, 202, 96, 0.72);
+      box-shadow: 0 0 22px rgba(60, 202, 96, 0.18);
+    }
+    .social-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
     .hero-image { flex: 0 0 380px; }
     .phone-frame {
@@ -135,30 +169,9 @@
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
     .floating { animation: float 6s ease-in-out infinite; }
 
-    /* FEATURES SECTION */
-    .features-section {
-      padding: 40px 0 90px;
-    }
-
-    .features-header {
-      max-width: 720px;
-      margin: 0 auto 28px;
-      text-align: center;
-      position: relative;
-    }
-
-    .features-title {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      margin: 0 0 10px;
-    }
-
-    .features-subtitle {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 16px;
-    }
+    .features-section { padding: 40px 0 90px; }
+    .features-header { max-width: 720px; margin: 0 auto 28px; text-align: center; position: relative; }
+    .features-title { font-size: 40px; font-weight: 800; letter-spacing: -0.6px; margin: 0 0 10px; }
 
     .features-grid {
       display: grid;
@@ -192,7 +205,6 @@
       pointer-events: none;
     }
 
-    /* Hover-only spotlight glow behind each card */
     .feature-card::before {
       content: "";
       position: absolute;
@@ -204,9 +216,7 @@
       transition: opacity 0.22s ease;
       pointer-events: none;
     }
-    .feature-card:hover::before {
-      opacity: 1;
-    }
+    .feature-card:hover::before { opacity: 1; }
 
     .feature-card:hover {
       transform: translateY(-4px);
@@ -282,7 +292,7 @@
       max-width: 34ch;
     }
 
-    /* FOOTER LAYOUT (UPDATED) */
+    /* FOOTER LAYOUT (UPDATED WITH SUPPORT LINK) */
     .footer-content {
       display: flex;
       justify-content: space-between;
@@ -331,249 +341,4 @@
     .modal-card {
       background: #0b1220; border: 1px solid var(--accent); border-radius: 24px;
       padding: 40px; width: 90%; max-width: 400px; text-align: center;
-      box-shadow: 0 0 50px var(--accent-glow); position: relative;
-    }
-    .modal-card h2 { margin-top: 0; color: #fff; }
-    .modal-card p { color: var(--text-muted); margin-bottom: 24px; }
-    .modal-input {
-      width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--border);
-      background: var(--glass); color: white; font-size: 16px; margin-bottom: 20px; outline: none;
-    }
-    .modal-input:focus { border-color: var(--accent); }
-    .close-btn { position: absolute; top: 15px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 24px; }
-
-    /* Success State */
-    #successMessage { display: none; padding: 20px 0; }
-    #successMessage h3 { color: var(--accent); margin-bottom: 8px; }
-
-    @media (max-width: 1100px) {
-      .hero { flex-direction: column; text-align: center; align-items: center; }
-      .hero-sub { margin: 45px auto 40px; }
-      .btn-group { justify-content: center; }
-      .hero-image { flex: 0 0 auto; max-width: 320px; margin-top: 40px; }
-      .feature-head { justify-content: center; }
-
-      /* Footer stacks cleanly on smaller widths */
-      .footer-content { flex-direction: column; align-items: flex-start; }
-      .footer-links { margin-left: 0; justify-content: flex-start; }
-    }
-
-    @media (max-width: 900px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .features-section { padding: 24px 0 70px; }
-      .feature-card { min-height: 0; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="mesh-bg"></div>
-
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo-group">
-          <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
-          <div class="logo-text">Weed It Out</div>
-        </div>
-        <div class="status-pill"><div class="dot"></div> iOS</div>
-      </nav>
-    </div>
-  </header>
-
-  <div class="container">
-    <main class="hero">
-      <div class="hero-content">
-        <h1 class="h1">
-          <span class="master-text">Master your</span>
-          <span class="clarity-word">Clarity</span>
-        </h1>
-
-        <p class="hero-sub">
-          A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim your time back.
-        </p>
-
-        <div class="btn-group">
-          <button onclick="openModal()" class="btn btn-primary">Join the Waitlist</button>
-          <a href="#features" class="btn btn-secondary">Explore Features</a>
-        </div>
-      </div>
-
-      <div class="hero-image floating">
-        <div class="phone-frame">
-          <img src="assets/dashboard_example.png" alt="Weed It Out Dashboard">
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <div class="container">
-    <section id="features" class="features-section">
-      <div class="features-header">
-        <h1 class="features-title">Features</h1>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-kicker"><span class="feature-dot"></span> Accurate Data</div>
-
-          <div class="feature-head">
-            <h3 class="feature-title">Urges & Sessions</h3>
-            <div class="feature-icon" aria-hidden="true">
-              <!-- Heart icon -->
-              <svg viewBox="0 0 24 24">
-                <path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.6 9 4.6c-1.6-1.6-4.2-1.6-5.8 0s-1.6 4.2 0 5.8L12 21l8.8-10.6c1.6-1.6 1.6-4.2 0-5.8z"/>
-              </svg>
-            </div>
-          </div>
-
-          <p class="feature-desc">Log urges and usage with a clean, fast flow that doesn’t feel like “tracking.”</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-kicker"><span class="feature-dot"></span> Visualized Savings</div>
-
-          <div class="feature-head">
-            <h3 class="feature-title">Avoided Costs</h3>
-            <div class="feature-icon" aria-hidden="true">
-              <!-- Dollar icon -->
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2v20"/>
-                <path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5S9.2 10 12 10s5 1.6 5 3.5S14.8 17 12 17s-5-1.6-5-3.5"/>
-              </svg>
-            </div>
-          </div>
-
-          <p class="feature-desc">See money and grams you didn’t burn—simple, motivating, and visual.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-kicker"><span class="feature-dot"></span> Restored Productivity</div>
-
-          <div class="feature-head">
-            <h3 class="feature-title">Reclaimed Time</h3>
-            <div class="feature-icon" aria-hidden="true">
-              <!-- Clock icon -->
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v6l4 2"></path>
-              </svg>
-            </div>
-          </div>
-
-          <p class="feature-desc">Track clarity recovered and build momentum with streak-like progress.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- FOOTER (UPDATED WITH SUPPORT LINK) -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="logo-text">Weed It Out</div>
-
-          <div class="footer-disclaimer">
-            <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
-            Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <a href="./privacy.html">Privacy</a>
-          <a href="./terms.html">Terms</a>
-          <a href="./support.html">Support</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="modal-overlay" id="emailModal">
-    <div class="modal-card">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-
-      <div id="modalForm">
-        <h2>Get Early Access</h2>
-        <p>Join the waitlist to be the first to experience the full version of Weed It Out.</p>
-        <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
-        <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
-      </div>
-
-      <div id="successMessage">
-        <h3>You're on the list!</h3>
-        <p>We'll notify you upon Launch</p>
-        <button onclick="closeModal()" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('emailModal');
-    const modalForm = document.getElementById('modalForm');
-    const successMessage = document.getElementById('successMessage');
-
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjggooor";
-
-    function openModal() {
-      modal.style.display = 'flex';
-      modalForm.style.display = 'block';
-      successMessage.style.display = 'none';
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-
-    async function submitEmail() {
-      const emailEl = document.getElementById('emailInput');
-      const email = (emailEl.value || '').trim();
-
-      if (!email || !email.includes('@')) {
-        alert("Please enter a valid email address.");
-        return;
-      }
-
-      const btn = modalForm.querySelector('button');
-      const prevText = btn ? btn.textContent : null;
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Joining...";
-      }
-
-      try {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            email,
-            source: "weeditout.app",
-            signup_at: new Date().toISOString()
-          })
-        });
-
-        if (!res.ok) throw new Error("Formspree submission failed");
-
-        modalForm.style.display = 'none';
-        successMessage.style.display = 'block';
-        emailEl.value = "";
-      } catch (err) {
-        alert("Couldn’t join right now. Please try again in a moment.");
-      } finally {
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = prevText || "Join Now";
-        }
-      }
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) closeModal();
-    }
-  </script>
-
-</body>
-</html>
+      box-shadow: 0 0 50px v
