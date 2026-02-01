@@ -1,86 +1,129 @@
-Privacy Policy — Weed It Out
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Weed It Out — Privacy Policy</title>
 
-Weed It Out Privacy Policy
-Effective Date: February 1, 2026
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-1) Overview
+  <style>
+    :root {
+      --bg-deep: #050812;
+      --accent: #3CCA60;
+      --accent-glow: rgba(60, 202, 96, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
 
-This Privacy Policy explains how Weed It Out (“the App,” “we,” “us”) collects, uses, and shares information when you use the App and our website pages.
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
 
-2) Eligibility
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-The App is intended for users 21 years of age or older. By using the App, you represent that you are at least 21.
+    .mesh-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(60, 202, 96, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    }
 
-3) Information We Collect
+    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-A. Information you provide
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(60, 202, 96, 0.1);
+      overflow: hidden;
+    }
 
-Entries you choose to log (for example: sessions, urges, timestamps, optional notes, and preferences/settings).
+    header::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: sweep 6s linear infinite;
+      box-shadow: 0 0 15px var(--accent);
+      bottom: 0; left: -100%;
+    }
 
-B. Device and diagnostics data
+    @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
 
-Basic device and app diagnostic information (such as device model, iOS version, and crash/diagnostic data) may be collected if enabled via your device settings or used within the App to improve stability and performance.
+    nav {
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
 
-C. Purchases and subscriptions
+    .logo-group { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 34px; height: auto; }
+    .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
 
-If you purchase a subscription or in-app purchase, Apple processes the payment. We may receive limited information needed to confirm purchase status (e.g., entitlement active/inactive) to unlock features.
+    .nav-links { display: flex; align-items: center; gap: 14px; }
+    .pill-link {
+      background: rgba(60, 202, 96, 0.05);
+      border: 1px solid var(--accent);
+      padding: 8px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .pill-link:hover { transform: translateY(-1px); background: rgba(60, 202, 96, 0.09); }
 
-4) How We Use Information
+    main { padding: 54px 0 70px; flex: 1; }
 
-We use information to:
+    .page-title {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      line-height: 1.05;
+      font-size: clamp(34px, 4.2vw, 54px);
+    }
 
-Provide core functionality (logging, progress views, streaks, and insights).
+    .page-sub {
+      margin: 14px 0 0;
+      color: var(--text-muted);
+      max-width: 70ch;
+      font-size: 16px;
+    }
 
-Improve reliability and fix bugs (performance monitoring, diagnostics).
+    .meta-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
 
-Support subscriptions and restore purchases.
-
-Respond to support requests.
-
-5) Metrics and Estimates
-
-Some outputs in the App (for example: time saved, money saved, usage-related estimates, or “clarity” scoring) may be based on your inputs and generalized assumptions. These are provided for informational purposes and may not be perfectly accurate.
-
-6) How We Share Information
-
-We do not sell your personal information.
-
-We may share limited information only in these cases:
-
-Service providers: Vendors who help operate essential services (e.g., hosting, diagnostics) may process data on our behalf under obligations to protect it and use it only to provide their services.
-
-Apple / App Store: Apple manages payments and may provide purchase verification signals.
-
-Legal and safety: We may disclose information if required by law or to protect rights, safety, and security.
-
-7) International Use and Legal Compliance
-
-The App may be accessed from locations with different laws. You are responsible for using the App in compliance with applicable local laws. We do not represent that the App is appropriate or available for use in every jurisdiction.
-
-8) Data Retention
-
-We retain information only as long as necessary to operate the App, provide support, and comply with legal obligations. If the App includes account-linked data or synced storage, you may request deletion by contacting us.
-
-9) Security
-
-We use reasonable safeguards designed to protect information. No method of transmission or storage is 100% secure, and we cannot guarantee absolute security.
-
-10) Children’s Privacy
-
-The App is not intended for children under 13, and we do not knowingly collect personal information from children under 13.
-
-11) Your Choices
-
-You can stop using the App at any time.
-
-Subscriptions are managed through iOS Settings → Apple ID → Subscriptions.
-
-If the App supports accounts/sync, you may request access or deletion by contacting support.
-
-12) Changes to This Policy
-
-We may update this policy from time to time. We will update the Effective Date and post the revised policy here.
-
-13) Contact
-
-Questions or requests: SUPPORT_EMAIL_HERE
+    .meta-pill {
+      display: inline-flex;
+      align-items: ce
