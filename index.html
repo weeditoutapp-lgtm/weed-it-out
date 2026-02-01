@@ -341,4 +341,268 @@
     .modal-card {
       background: #0b1220; border: 1px solid var(--accent); border-radius: 24px;
       padding: 40px; width: 90%; max-width: 400px; text-align: center;
-      box-shadow: 0 0 50px v
+      box-shadow: 0 0 50px var(--accent-glow); position: relative;
+    }
+    .modal-card h2 { margin-top: 0; color: #fff; }
+    .modal-card p { color: var(--text-muted); margin-bottom: 24px; }
+    .modal-input {
+      width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--glass); color: white; font-size: 16px; margin-bottom: 20px; outline: none;
+    }
+    .modal-input:focus { border-color: var(--accent); }
+    .close-btn { position: absolute; top: 15px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 24px; }
+
+    #successMessage { display: none; padding: 20px 0; }
+    #successMessage h3 { color: var(--accent); margin-bottom: 8px; }
+
+    @media (max-width: 1100px) {
+      .hero { flex-direction: column; text-align: center; align-items: center; }
+      .hero-sub { margin: 45px auto 40px; }
+      .btn-group { justify-content: center; }
+      .hero-socials { justify-content: center; }
+      .hero-image { flex: 0 0 auto; max-width: 320px; margin-top: 40px; }
+      .feature-head { justify-content: center; }
+
+      .footer-content { flex-direction: column; align-items: flex-start; }
+      .footer-links { margin-left: 0; justify-content: flex-start; }
+    }
+
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .features-section { padding: 24px 0 70px; }
+      .feature-card { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mesh-bg"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo-group">
+          <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
+          <div class="logo-text">Weed It Out</div>
+        </div>
+        <div class="status-pill"><div class="dot"></div> iOS</div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <main class="hero">
+      <div class="hero-content">
+        <h1 class="h1">
+          <span class="master-text">Master your</span>
+          <span class="clarity-word">Clarity</span>
+        </h1>
+
+        <p class="hero-sub">
+          A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim your time back.
+        </p>
+
+        <div class="btn-group">
+          <button onclick="openModal()" class="btn btn-primary">Join the Waitlist</button>
+          <a href="#features" class="btn btn-secondary">Explore Features</a>
+        </div>
+
+        <!-- SOCIALS (RIGHT BELOW THE WAITLIST BUTTONS) -->
+        <div class="hero-socials" aria-label="Social media links">
+          <div class="social-label">Follow</div>
+
+          <!-- Replace YOUR_HANDLE with your real handle -->
+          <a class="social-icon"
+             href="https://www.instagram.com/YOUR_HANDLE/"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+              <rect x="8" y="8" width="8" height="8" rx="2.5"></rect>
+              <circle cx="12" cy="12" r="2.5"></circle>
+              <path d="M16.6 7.4h.01"></path>
+            </svg>
+          </a>
+
+          <a class="social-icon"
+             href="https://www.tiktok.com/@YOUR_HANDLE"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 3v10.2a3.8 3.8 0 1 1-3.1-3.7"></path>
+              <path d="M14 7c1.3 1.9 3.4 3 6 3"></path>
+              <path d="M10.9 9.5v6.2a2.4 2.4 0 1 1-2-2.3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image floating">
+        <div class="phone-frame">
+          <img src="assets/dashboard_example.png" alt="Weed It Out Dashboard">
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="container">
+    <section id="features" class="features-section">
+      <div class="features-header">
+        <h1 class="features-title">Features</h1>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-kicker"><span class="feature-dot"></span> Accurate Data</div>
+          <div class="feature-head">
+            <h3 class="feature-title">Urges & Sessions</h3>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.6 9 4.6c-1.6-1.6-4.2-1.6-5.8 0s-1.6 4.2 0 5.8L12 21l8.8-10.6c1.6-1.6 1.6-4.2 0-5.8z"/>
+              </svg>
+            </div>
+          </div>
+          <p class="feature-desc">Log urges and usage with a clean, fast flow that doesn’t feel like “tracking.”</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-kicker"><span class="feature-dot"></span> Visualized Savings</div>
+          <div class="feature-head">
+            <h3 class="feature-title">Avoided Costs</h3>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2v20"/>
+                <path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5S9.2 10 12 10s5 1.6 5 3.5S14.8 17 12 17s-5-1.6-5-3.5"/>
+              </svg>
+            </div>
+          </div>
+          <p class="feature-desc">See money and grams you didn’t burn—simple, motivating, and visual.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-kicker"><span class="feature-dot"></span> Restored Productivity</div>
+          <div class="feature-head">
+            <h3 class="feature-title">Reclaimed Time</h3>
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v6l4 2"></path>
+              </svg>
+            </div>
+          </div>
+          <p class="feature-desc">Track clarity recovered and build momentum with streak-like progress.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="logo-text">Weed It Out</div>
+          <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
+            Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="./support.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="emailModal">
+    <div class="modal-card">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+
+      <div id="modalForm">
+        <h2>Get Early Access</h2>
+        <p>Join the waitlist to be the first to experience the full version of Weed It Out.</p>
+        <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
+        <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
+      </div>
+
+      <div id="successMessage">
+        <h3>You're on the list!</h3>
+        <p>We'll notify you upon Launch</p>
+        <button onclick="closeModal()" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('emailModal');
+    const modalForm = document.getElementById('modalForm');
+    const successMessage = document.getElementById('successMessage');
+
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjggooor";
+
+    function openModal() {
+      modal.style.display = 'flex';
+      modalForm.style.display = 'block';
+      successMessage.style.display = 'none';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    async function submitEmail() {
+      const emailEl = document.getElementById('emailInput');
+      const email = (emailEl.value || '').trim();
+
+      if (!email || !email.includes('@')) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      const btn = modalForm.querySelector('button');
+      const prevText = btn ? btn.textContent : null;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Joining...";
+      }
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            email,
+            source: "weeditout.app",
+            signup_at: new Date().toISOString()
+          })
+        });
+
+        if (!res.ok) throw new Error("Formspree submission failed");
+
+        modalForm.style.display = 'none';
+        successMessage.style.display = 'block';
+        emailEl.value = "";
+      } catch (err) {
+        alert("Couldn’t join right now. Please try again in a moment.");
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = prevText || "Join Now";
+        }
+      }
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) closeModal();
+    }
+  </script>
+
+</body>
+</html>
