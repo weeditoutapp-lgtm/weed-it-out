@@ -453,4 +453,123 @@
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v6l4 2"></
+                <path d="M12 7v6l4 2"></path>
+              </svg>
+            </div>
+          </div>
+
+          <p class="feature-desc">Track clarity recovered and build momentum with streak-like progress.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER (UPDATED) -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="logo-text">Weed It Out</div>
+
+          <div class="footer-disclaimer">
+            <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
+            Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="emailModal">
+    <div class="modal-card">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+
+      <div id="modalForm">
+        <h2>Get Early Access</h2>
+        <p>Join the waitlist to be the first to experience the full version of Weed It Out.</p>
+        <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
+        <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
+      </div>
+
+      <div id="successMessage">
+        <h3>You're on the list!</h3>
+        <p>We'll notify you upon Launch</p>
+        <button onclick="closeModal()" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('emailModal');
+    const modalForm = document.getElementById('modalForm');
+    const successMessage = document.getElementById('successMessage');
+
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjggooor";
+
+    function openModal() {
+      modal.style.display = 'flex';
+      modalForm.style.display = 'block';
+      successMessage.style.display = 'none';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    async function submitEmail() {
+      const emailEl = document.getElementById('emailInput');
+      const email = (emailEl.value || '').trim();
+
+      if (!email || !email.includes('@')) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      const btn = modalForm.querySelector('button');
+      const prevText = btn ? btn.textContent : null;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Joining...";
+      }
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            email,
+            source: "weeditout.app",
+            signup_at: new Date().toISOString()
+          })
+        });
+
+        if (!res.ok) throw new Error("Formspree submission failed");
+
+        modalForm.style.display = 'none';
+        successMessage.style.display = 'block';
+        emailEl.value = "";
+      } catch (err) {
+        alert("Couldn’t join right now. Please try again in a moment.");
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = prevText || "Join Now";
+        }
+      }
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) closeModal();
+    }
+  </script>
+
+</body>
+</html>
