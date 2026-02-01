@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
-  <title>Weed It Out — Reclaim  clarity</title>
+  <title>Weed It Out — Reclaim your clarity</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,8 +77,7 @@
       box-shadow: 0 0 15px var(--accent);
     }
     header::after { bottom: 0; left: -100%; }
-    footer::before { top: 0; left: 100%; }
-    footer::before { animation: sweepReverse 6s linear infinite; }
+    footer::before { top: 0; left: 100%; animation: sweepReverse 6s linear infinite; }
 
     @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
     @keyframes sweepReverse { 0% { left: 100%; } 100% { left: -100%; } }
@@ -89,46 +88,119 @@
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
 
     .status-pill {
-      background: rgba(60, 202, 96, 0.05); border: 1px solid var(--accent);
-      padding: 6px 14px; border-radius: 100px;
-      font-size: 12px; color: var(--accent); font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
+      background: rgba(60, 202, 96, 0.05);
+      border: 1px solid var(--accent);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
 
-    .hero { padding: 80px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 60px; flex: 1; }
+    .hero {
+      padding: 80px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 60px;
+      flex: 1;
+    }
     .hero-content { flex: 1; position: relative; padding-top: 106px; }
 
-    .h1 { font-weight: 900; margin: 0; display: flex; flex-direction: column; line-height: 1.05; position: relative; z-index: 999 !important; }
-    .h1 .master-text { font-size: clamp(32px, 4.5vw, 66px); letter-spacing: -1px; color: #fff; padding-bottom: 4px; }
+    .h1 {
+      font-weight: 900;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      position: relative;
+      z-index: 2;
+    }
+    .h1 .master-text {
+      font-size: clamp(32px, 4.5vw, 66px);
+      letter-spacing: -1px;
+      color: #fff;
+      padding-bottom: 4px;
+    }
     .h1 .clarity-word {
-      font-size: clamp(70px, 12vw, 200px); background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: -2px; filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
+      font-size: clamp(70px, 12vw, 200px);
+      background: linear-gradient(180deg, #3CCA60 0%, #2ba34d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
+      filter: drop-shadow(0 0 25px rgba(60, 202, 96, 0.3));
     }
 
-    .hero-sub { font-size: 20px; color: var(--text-muted); max-width: 520px; margin-top: 45px; margin-bottom: 48px; position: relative; z-index: 1; }
+    .hero-sub {
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-top: 45px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
 
-    .btn-group { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .btn { padding: 18px 32px; border-radius: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s ease; font-size: 16px; border: none; font-family: inherit; cursor: pointer; display: inline-block; }
-    .btn-primary { background: var(--accent); color: #050812; box-shadow: 0 20px 40px var(--accent-glow); }
-    .btn-secondary { background: var(--glass); color: white; border: 1px solid var(--border); backdrop-filter: blur(10px); }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .btn {
+      padding: 18px 32px;
+      border-radius: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 16px;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #050812;
+      box-shadow: 0 20px 40px var(--accent-glow);
+    }
+    .btn-secondary {
+      background: var(--glass);
+      color: white;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
 
     /* SOCIALS (HERO) */
     .hero-socials {
-      margin-top: 14px;
+      margin-top: 4px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     .social-label {
       color: rgba(255,255,255,0.62);
       font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
       margin-right: 4px;
     }
@@ -149,19 +221,33 @@
       border-color: rgba(60, 202, 96, 0.72);
       box-shadow: 0 0 22px rgba(60, 202, 96, 0.18);
     }
+
+    /* Brand SVGs (fill-based), normalized */
     .social-icon svg {
-      width: 32px;
-      height: 32px;
-      stroke: var(--accent);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      width: 34px;
+      height: 34px;
+      display: block;
+      transform: translateY(0.5px);
     }
+
+    /* Force all shapes inside the SVG to Weed It Out green */
+    .social-icon svg path,
+    .social-icon svg rect,
+    .social-icon svg circle,
+    .social-icon svg polygon {
+      fill: var(--accent) !important;
+      stroke: none !important;
+    }
+
+    /* Optical weight normalization */
+    .social-icon--ig svg { transform: translateY(0.5px) scale(0.92); }
+    .social-icon--tt svg { transform: translateY(0.5px) scale(1.02); }
 
     .hero-image { flex: 0 0 380px; }
     .phone-frame {
-      border-radius: 48px; overflow: hidden; border: 8px solid #1e293b;
+      border-radius: 48px;
+      overflow: hidden;
+      border: 8px solid #1e293b;
       box-shadow: 0 60px 120px -20px rgba(0,0,0,0.8);
     }
     .phone-frame img { width: 100%; display: block; }
@@ -192,416 +278,3 @@
       transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
       min-height: 160px;
       overflow: hidden;
-      isolation: isolate;
-      transform: translateZ(0);
-    }
-
-    .feature-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(60, 202, 96, 0.10), transparent 55%);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .feature-card::before {
-      content: "";
-      position: absolute;
-      inset: -60px;
-      z-index: -1;
-      background: radial-gradient(circle at 30% 35%, rgba(60, 202, 96, 0.22), transparent 62%);
-      filter: blur(18px);
-      opacity: 0;
-      transition: opacity 0.22s ease;
-      pointer-events: none;
-    }
-    .feature-card:hover::before { opacity: 1; }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(60, 202, 96, 0.75);
-      box-shadow: 0 34px 80px rgba(0,0,0,0.45);
-    }
-
-    .feature-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(60, 202, 96, 0.95);
-      margin-bottom: 12px;
-    }
-
-    .feature-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 14px rgba(60, 202, 96, 0.55);
-      flex: 0 0 auto;
-    }
-
-    .feature-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .feature-title {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      line-height: 1.1;
-    }
-
-    .feature-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 2px solid rgba(60, 202, 96, 0.60);
-      background: rgba(60, 202, 96, 0.06);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 18px rgba(60, 202, 96, 0.18);
-      flex: 0 0 auto;
-    }
-
-    .feature-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--accent);
-      fill: none;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .feature-desc {
-      margin: 0;
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.45;
-      max-width: 34ch;
-    }
-
-    /* FOOTER LAYOUT (UPDATED WITH SUPPORT LINK) */
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 24px;
-      width: 100%;
-    }
-
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .footer-links {
-      margin-left: auto;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      justify-content: flex-end;
-      white-space: nowrap;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 13px;
-    }
-    .footer-links a:hover { text-decoration: underline; }
-
-    .footer-disclaimer {
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.5;
-      max-width: 110ch;
-    }
-
-    /* MODAL (POPUP) STYLES */
-    .modal-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(5, 8, 18, 0.85); backdrop-filter: blur(12px);
-      display: none; align-items: center; justify-content: center; z-index: 2000;
-    }
-    .modal-card {
-      background: #0b1220; border: 1px solid var(--accent); border-radius: 24px;
-      padding: 40px; width: 90%; max-width: 400px; text-align: center;
-      box-shadow: 0 0 50px var(--accent-glow); position: relative;
-    }
-    .modal-card h2 { margin-top: 0; color: #fff; }
-    .modal-card p { color: var(--text-muted); margin-bottom: 24px; }
-    .modal-input {
-      width: 100%; padding: 16px; border-radius: 12px; border: 1px solid var(--border);
-      background: var(--glass); color: white; font-size: 16px; margin-bottom: 20px; outline: none;
-    }
-    .modal-input:focus { border-color: var(--accent); }
-    .close-btn { position: absolute; top: 15px; right: 20px; color: var(--text-muted); cursor: pointer; font-size: 24px; }
-
-    #successMessage { display: none; padding: 20px 0; }
-    #successMessage h3 { color: var(--accent); margin-bottom: 8px; }
-
-    @media (max-width: 1100px) {
-      .hero { flex-direction: column; text-align: center; align-items: center; }
-      .hero-sub { margin: 45px auto 40px; }
-      .btn-group { justify-content: center; }
-      .hero-socials { justify-content: center; }
-      .hero-image { flex: 0 0 auto; max-width: 320px; margin-top: 40px; }
-      .feature-head { justify-content: center; }
-
-      .footer-content { flex-direction: column; align-items: flex-start; }
-      .footer-links { margin-left: 0; justify-content: flex-start; }
-    }
-
-    @media (max-width: 900px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .features-section { padding: 24px 0 70px; }
-      .feature-card { min-height: 0; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="mesh-bg"></div>
-
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo-group">
-          <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
-          <div class="logo-text">Weed It Out</div>
-        </div>
-        <div class="status-pill"><div class="dot"></div> iOS</div>
-      </nav>
-    </div>
-  </header>
-
-  <div class="container">
-    <main class="hero">
-      <div class="hero-content">
-        <h1 class="h1">
-          <span class="master-text">Master  your</span>
-          <span class="clarity-word">Clarity</span>
-        </h1>
-
-        <p class="hero-sub">
-          A clean, gamified experience designed to help you track urges, visualize avoided costs, and reclaim  time back.
-        </p>
-
-        <div class="btn-group">
-          <button onclick="openModal()" class="btn btn-primary">Join the Waitlist</button>
-          <a href="#features" class="btn btn-secondary">Explore Features</a>
-        </div>
-
-        <!-- SOCIALS (RIGHT BELOW THE WAITLIST BUTTONS) -->
-        <div class="hero-socials" aria-label="Social media links">
-          <div class="social-label">Follow</div>
-
-          <a class="social-icon"
-             href="https://www.instagram.com/weeditout.app/"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="5" y="5" width="14" height="14" rx="4"></rect>
-              <rect x="8" y="8" width="8" height="8" rx="2.5"></rect>
-              <circle cx="12" cy="12" r="2.5"></circle>
-              <path d="M16.6 7.4h.01"></path>
-            </svg>
-          </a>
-
-          <a class="social-icon"
-             href="https://www.tiktok.com/@weeditout.app"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="TikTok">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14 3v10.2a3.8 3.8 0 1 1-3.1-3.7"></path>
-              <path d="M14 7c1.3 1.9 3.4 3 6 3"></path>
-              <path d="M10.9 9.5v6.2a2.4 2.4 0 1 1-2-2.3"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-image floating">
-        <div class="phone-frame">
-          <img src="assets/dashboard_example.png" alt="Weed It Out Dashboard">
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <div class="container">
-    <section id="features" class="features-section">
-      <div class="features-header">
-        <h1 class="features-title">Features</h1>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-kicker"><span class="feature-dot"></span> Accurate Data</div>
-          <div class="feature-head">
-            <h3 class="feature-title">Urges & Sessions</h3>
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.6 9 4.6c-1.6-1.6-4.2-1.6-5.8 0s-1.6 4.2 0 5.8L12 21l8.8-10.6c1.6-1.6 1.6-4.2 0-5.8z"/>
-              </svg>
-            </div>
-          </div>
-          <p class="feature-desc">Log urges and usage with a clean, fast flow that doesn’t feel like “tracking.”</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-kicker"><span class="feature-dot"></span> Visualized Savings</div>
-          <div class="feature-head">
-            <h3 class="feature-title">Avoided Costs</h3>
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 2v20"/>
-                <path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.6-5 3.5S9.2 10 12 10s5 1.6 5 3.5S14.8 17 12 17s-5-1.6-5-3.5"/>
-              </svg>
-            </div>
-          </div>
-          <p class="feature-desc">See money and grams you didn’t burn—simple, motivating, and visual.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-kicker"><span class="feature-dot"></span> Restored Productivity</div>
-          <div class="feature-head">
-            <h3 class="feature-title">Reclaimed Time</h3>
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="M12 7v6l4 2"></path>
-              </svg>
-            </div>
-          </div>
-          <p class="feature-desc">Track clarity recovered and build momentum with streak-like progress.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="logo-text">Weed It Out</div>
-          <div class="footer-disclaimer">
-            <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
-            Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <a href="./privacy.html">Privacy</a>
-          <a href="./terms.html">Terms</a>
-          <a href="./support.html">Support</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="modal-overlay" id="emailModal">
-    <div class="modal-card">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-
-      <div id="modalForm">
-        <h2>Get Early Access</h2>
-        <p>Join the waitlist to be the first to experience the full version of Weed It Out.</p>
-        <input type="email" id="emailInput" class="modal-input" placeholder="name@example.com">
-        <button onclick="submitEmail()" class="btn btn-primary" style="width: 100%">Join Now</button>
-      </div>
-
-      <div id="successMessage">
-        <h3>You're on the list!</h3>
-        <p>We'll notify you upon Launch</p>
-        <button onclick="closeModal()" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('emailModal');
-    const modalForm = document.getElementById('modalForm');
-    const successMessage = document.getElementById('successMessage');
-
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjggooor";
-
-    function openModal() {
-      modal.style.display = 'flex';
-      modalForm.style.display = 'block';
-      successMessage.style.display = 'none';
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-
-    async function submitEmail() {
-      const emailEl = document.getElementById('emailInput');
-      const email = (emailEl.value || '').trim();
-
-      if (!email || !email.includes('@')) {
-        alert("Please enter a valid email address.");
-        return;
-      }
-
-      const btn = modalForm.querySelector('button');
-      const prevText = btn ? btn.textContent : null;
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Joining...";
-      }
-
-      try {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({
-            email,
-            source: "weeditout.app",
-            signup_at: new Date().toISOString()
-          })
-        });
-
-        if (!res.ok) throw new Error("Formspree submission failed");
-
-        modalForm.style.display = 'none';
-        successMessage.style.display = 'block';
-        emailEl.value = "";
-      } catch (err) {
-        alert("Couldn’t join right now. Please try again in a moment.");
-      } finally {
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = prevText || "Join Now";
-        }
-      }
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) closeModal();
-    }
-  </script>
-
-</body>
-</html>
