@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Weed It Out — Support</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #050812;
+      --accent: #3CCA60;
+      --accent-glow: rgba(60, 202, 96, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.03);
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mesh-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(60, 202, 96, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(60, 202, 96, 0.1);
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: sweep 6s linear infinite;
+      box-shadow: 0 0 15px var(--accent);
+      bottom: 0; left: -100%;
+    }
+
+    @keyframes sweep { 0% { left: -100%; } 100% { left: 100%; } }
+
+    nav {
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-group { display: flex; align-items: center; gap: 12px; }
+    .logo-img { width: 34px; height: auto; }
+    .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+
+    .pill-link {
+      background: rgba(60, 202, 96, 0.05);
+      border: 1px solid var(--accent);
+      padding: 8px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .pill-link:hover { transform: translateY(-1px); background: rgba(60, 202, 96, 0.09); }
+
+    main { padding: 54px 0 70px; flex: 1; }
+
+    .page-title {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      line-height: 1.05;
+      font-size: clamp(34px, 4.2vw, 54px);
+    }
+
+    .page-sub {
+      margin: 14px 0 0;
+      color: var(--text-muted);
+      max-width: 80ch;
+      font-size: 16px;
+    }
+
+    .cards { margin-top: 26px; display: grid; gap: 14px; }
+
+    .card {
+      border: 1px solid rgba(60, 202, 96, 0.22);
+      background: rgba(255,255,255,0.02);
+      border-radius: 20px;
+      padding: 18px 18px 8px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .card p, .card li {
+      color: var(--text-muted);
+      margin: 0 0 10px;
+    }
+
+    .card ul { margin: 0 0 10px; padding-left: 18px; }
+    .card li { margin: 8px 0; }
+
+    .cta-box {
+      margin-top: 18px;
+      padding: 14px 14px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(60, 202, 96, 0.35);
+      background: rgba(60, 202, 96, 0.06);
+    }
+
+    .cta-box p { margin: 0; color: rgba(255,255,255,0.85); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+      color: rgba(255,255,255,0.9);
+    }
+
+    footer {
+      margin-top: auto;
+      background: rgba(5, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(60, 202, 96, 0.1);
+      padding: 34px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: sweepReverse 6s linear infinite;
+      box-shadow: 0 0 15px var(--accent);
+      top: 0; left: 100%;
+    }
+
+    @keyframes sweepReverse { 0% { left: 100%; } 100% { left: -100%; } }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-muted { color: var(--text-muted); font-size: 13px; }
+    .footer-links { display: flex; gap: 18px; }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+
+    .disclaimer {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      max-width: 110ch;
+    }
+
+    @media (max-width: 900px) {
+      .container { max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mesh-bg"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo-group">
+          <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
+          <div class="logo-text">Weed It Out</div>
+        </div>
+
+        <a class="pill-link" href="./">Back to site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Support</h1>
+      <p class="page-sub">
+        Need help with Weed It Out? Use the options below. This page includes the contact and product information typically expected for App Store review.
+      </p>
+
+      <div class="cards">
+        <section class="card">
+          <h2>Contact</h2>
+          <p>
+            Email: <a href="mailto:SUPPORT_EMAIL_HERE">SUPPORT_EMAIL_HERE</a>
+          </p>
+          <p style="color: rgba(255,255,255,0.62); font-size: 12px;">
+            Replace <code>SUPPORT_EMAIL_HERE</code> with your real support email before publishing.
+          </p>
+
+          <div class="cta-box">
+            <p><strong>When emailing support:</strong> include your iPhone model, iOS version, and a short description of what happened.</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Troubleshooting</h2>
+          <ul>
+            <li><strong>Subscriptions:</strong> iOS Settings → Apple ID → Subscriptions (manage, cancel, or restore).</li>
+            <li><strong>Restore purchases:</strong> if the app includes a Restore button, try it after reinstalling.</li>
+            <li><strong>App not saving changes:</strong> force-close the app and reopen; ensure you’re on the latest version.</li>
+            <li><strong>Crashes or freezing:</strong> restart your phone; update iOS; reinstall the app.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Account & Data</h2>
+          <p>
+            Weed It Out is designed to minimize data collection and provide habit tracking only.
+            If you need help with data access or deletion requests (if applicable), email support.
+          </p>
+          <ul>
+            <li><strong>Data deletion request:</strong> email support with the subject line <em>“Data Deletion Request”</em>.</li>
+            <li><strong>Data access request:</strong> email support with the subject line <em>“Data Access Request”</em>.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Legal & Policy Links</h2>
+          <ul>
+            <li><a href="./privacy.html">Privacy Policy</a></li>
+            <li><a href="./terms.html">Terms of Service</a></li>
+          </ul>
+          <p>
+            <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
+            Metrics shown in the app may be estimates. You are responsible for complying with local laws and your own decisions.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>App Information</h2>
+          <ul>
+            <li><strong>App name:</strong> Weed It Out</li>
+            <li><strong>Platform:</strong> iOS</li>
+            <li><strong>Developer:</strong> Riley Svensson</li>
+            <li><strong>Minimum age:</strong> 21+</li>
+          </ul>
+          <p style="color: rgba(255,255,255,0.62); font-size: 12px;">
+            If you want to list a version number here, update this page whenever you ship an update.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Feedback</h2>
+          <p>
+            Want to suggest a feature or report a bug? Email support and include:
+          </p>
+          <ul>
+            <li>What you expected to happen vs what actually happened</li>
+            <li>Any screenshots (if helpful)</li>
+            <li>Steps to reproduce the issue</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div class="footer-muted">Weed It Out</div>
+        <div class="footer-links">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+          <a href="./support.html">Support</a>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> For users 21+. Habit tracking only — not medical or legal advice.
+        Metrics may be estimates. You are responsible for complying with local laws and your own decisions.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
