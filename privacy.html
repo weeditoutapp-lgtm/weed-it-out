@@ -377,8 +377,16 @@
           </ul>
           <p>
             <strong>Account deletion:</strong> If you delete your account from within the App (see “Your choices” below), your Firebase Authentication account
-            is removed. Some purchase-related records may still be retained by Apple and/or our subscription providers as needed for compliance, auditing,
-            fraud prevention, and transaction integrity.
+            is removed. <li>
+  The App includes an option in Settings to delete your account. When you use it, your account is removed from Firebase Authentication
+  (which may include your email used for sign-in and your Firebase UID). After deletion, you may lose access to account-linked features.
+  <br><br>
+  <strong>What this deletes:</strong> your Firebase Authentication account (email and UID).
+  <br>
+  <strong>What this does not delete:</strong> it does not automatically delete data stored by Apple (such as App Store transaction records),
+  and it may not delete records held by RevenueCat needed for subscription verification, fraud prevention, auditing, or compliance.
+</li>
+
           </p>
         </section>
 
