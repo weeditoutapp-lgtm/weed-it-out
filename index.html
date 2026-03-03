@@ -87,7 +87,11 @@
     .logo-img { width: 42px; height: auto; }
     .logo-text { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
 
-    .status-pill {
+    
+    .logo-link { text-decoration: none; color: inherit; }
+    .logo-link:hover { opacity: 0.95; }
+.status-pill {
+      text-decoration: none;
       background: rgba(60, 202, 96, 0.05);
       border: 1px solid var(--accent);
       padding: 6px 14px;
@@ -467,11 +471,11 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo-group">
+        <a class="logo-group logo-link" href="https://apps.apple.com/us/app/weed-it-out/id6756631310" target="_blank" rel="noopener noreferrer" aria-label="Weed It Out on the App Store">
           <img src="assets/new_light_logo.png" alt="Weed It Out" class="logo-img">
           <div class="logo-text">Weed It Out</div>
-        </div>
-        <div class="status-pill"><div class="dot"></div> iOS</div>
+        </a>
+        <a class="status-pill" href="https://apps.apple.com/us/app/weed-it-out/id6756631310" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store"><div class="dot"></div> iOS</a>
       </nav>
     </div>
   </header>
@@ -489,7 +493,7 @@
         </p>
 
         <div class="btn-group">
-          <button onclick="openModal()" class="btn btn-primary">Join the Waitlist</button>
+          <a href="https://apps.apple.com/us/app/weed-it-out/id6756631310" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Download on iPhone</a>
           <a href="#features" class="btn btn-secondary">Explore Features</a>
         </div>
 
@@ -522,9 +526,11 @@
       </div>
 
       <div class="hero-image floating">
+        <a href="https://apps.apple.com/us/app/weed-it-out/id6756631310" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store" style="display:block; text-decoration:none;">
         <div class="phone-frame">
           <img src="assets/dashboard_example.png" alt="Weed It Out Dashboard">
         </div>
+      </a>
       </div>
     </main>
   </div>
